@@ -5,7 +5,8 @@ class CreateSubscriptions < ActiveRecord::Migration[5.2]
       t.string :email
       t.integer :user_id
       t.integer :duration
-      t.date    :renewal_date
+      t.float :cost_per_duration
+      t.date :renewal_date
       t.timestamps
     end
   end

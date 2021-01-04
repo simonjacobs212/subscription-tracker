@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_01_04_182904) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_182904) do
     t.string "email"
     t.integer "user_id"
     t.integer "duration"
+    t.float "cost_per_duration"
     t.date "renewal_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
