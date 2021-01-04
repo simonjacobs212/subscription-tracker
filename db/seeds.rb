@@ -1,10 +1,16 @@
-Plant.destroy_all
-Person.destroy_all
-PlantParenthood.destroy_all
-Plant.reset_pk_sequence
-Person.reset_pk_sequence
-PlantParenthood.reset_pk_sequence
+Category.destroy_all
+Service.destroy_all
+User.destroy_all
+Reminder.destroy_all
+Subscription.destroy_all
+ServiceCategory.destroy_all
 
-
+Category.reset_pk_sequence
+Service.reset_pk_sequence
+User.reset_pk_sequence
+Reminder.reset_pk_sequence
+Subscription.reset_pk_sequence
+ServiceCategory.reset_pk_sequence
+########################################### 
 
 puts "🔥 🔥 🔥 🔥 "
