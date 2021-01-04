@@ -24,13 +24,11 @@ class Subscription < ActiveRecord::Base
     self.destroy
   end
 
-
-  def reminder_date(reminder)
-    self.renewal_date.to_datetime - reminder.days_notice.days
-  end
-
   def reminder_exists?
     !Reminder.find_by(subscription_id: self.id).nil?
   end
 
+  def active_reminder
+    Reminder.find_by(subscription_id: self.id, active: true)
+  end
 end

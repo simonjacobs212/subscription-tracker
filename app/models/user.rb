@@ -39,10 +39,10 @@ class User < ActiveRecord::Base
 
     def display_reminders
         self.subscriptions.each do |subscription|
+            next if subscription.active_reminder.nil?
             puts "Service Name: #{subscription.service.name.capitalize}"
-            puts "Cost per #{subscription.duration} days: $#{subscription.cost_per_duration}"
-            puts "Days until expiration: #{subscription.days_remaining}"
-            puts "----------------------------------"
+            puts "Expiration reminder will be sent on: #{subscription.active_reminder.reminder_date.to_date}"
+            puts "-----------------------------------------------------"
         end
     end
     
