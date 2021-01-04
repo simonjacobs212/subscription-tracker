@@ -1,3 +1,4 @@
 class ServiceCategory < ActiveRecord::Base
-  # add associatons!
+  belongs_to :category
+  belongs_to :service
 end

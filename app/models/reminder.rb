@@ -1,4 +1,5 @@
 class Reminder < ActiveRecord::Base
-    # add associatons!
+    belongs_to :subscription
+    belongs_to :reminded_user, class_name: "User", foreign_key: "user_id"
 end
     
