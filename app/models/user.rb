@@ -20,5 +20,15 @@ class User < ActiveRecord::Base
     def subscription_exist?(service)
         !Subscription.find_by(user_id: self.id, service_id: service.id).nil?
     end
+
+    def display_subscriptions
+        self.subscriptions.each do |subscription|
+            puts "Service Name: #{subscription.service.name.capitalize}"
+            puts "Cost per #{subscription.duration} days: $#{subscription.cost_per_duration}"
+            puts "Days until expiration: #{subscription.days_remaining}"
+            puts "----------------------------------"
+        end
+    end
+
+    
 end
-  

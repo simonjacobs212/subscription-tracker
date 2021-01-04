@@ -3,4 +3,25 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   has_many :reminders
   has_many :reminded_users, through: :reminders
+
+  after_create :initialize_renewal
+
+  def initialize_renewal
+    self.update(renewal_date: (self.created_at.to_datetime + self.duration.days))
+  end
+
+
+  def days_remaining
+    return (self.renewal_date.to_datetime - DateTime.now).to_i if (self.renewal_date.to_datetime - DateTime.now).to_i > 0
+    "⚠️ This subscription has expired"
+  end
+
+  def change_subscription(hash)
+    self.update(hash)
+  end
+
+  def delete_subscription
+    self.destroy
+  end
+
 end
