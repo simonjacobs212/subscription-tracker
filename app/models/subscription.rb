@@ -24,7 +24,7 @@ class Subscription < ActiveRecord::Base
   end
 
   def reminder_exists?
-    !Reminder.find_by(subscription_id: self.id).nil?
+    !self.active_reminder.nil?
   end
 
   def active_reminder
@@ -35,4 +35,10 @@ class Subscription < ActiveRecord::Base
     reminder = Reminder.find_or_create_by(subscription_id: self.id, active: true)
     reminder.update(days_notice: days_notice)
   end
+
+  def disable_reminder_for_subscription
+    reminder = self.active_reminder
+    reminder.update(active: false)
+  end
+
 end
