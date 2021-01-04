@@ -4,7 +4,7 @@ class Reminder < ActiveRecord::Base
     after_create :set_default_notice
 
     def set_default_notice
-        self.update(days_notice: 7)
+        self.update(days_notice: 7) if self.days_notice.nil?
     end
 
     def reminder_date

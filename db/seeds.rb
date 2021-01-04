@@ -35,10 +35,10 @@ xbox = Service.create(name: "xbox live", url: "xbox.com")
 
 puts "creating users"
 
-john = User.create(first_name: "john", last_name: "smith")
-mary = User.create(first_name: "mary", last_name: "howard")
-chris = User.create(first_name: "chris", last_name: "johnson")
-shelly = User.create(first_name: "shelly", last_name: "lansing")
+john = User.create(first_name: "john", last_name: "smith", app_username: "jsmith", app_password: "1234")
+mary = User.create(first_name: "mary", last_name: "howard", app_username: "mhoward", app_password: "1234")
+chris = User.create(first_name: "chris", last_name: "johnson", app_username: "cjohnson", app_password: "1234")
+shelly = User.create(first_name: "shelly", last_name: "lansing", app_username: "slansing", app_password: "1234")
 
 
 puts "creating service categories"
@@ -72,7 +72,7 @@ puts "creating reminders"
 
 ######### John has 1 active reminder, 3 inactive
 r1 = Reminder.create(subscription_id: s1.id, active: true)
-r2 = Reminder.create(subscription_id: s2.id, active: false)
+r2 = Reminder.create(subscription_id: s2.id, active: true, days_notice: 400)
 r3 = Reminder.create(subscription_id: s3.id, active: false)
 r4 = Reminder.create(subscription_id: s4.id, active: false)
 

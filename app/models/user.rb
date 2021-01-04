@@ -45,4 +45,45 @@ class User < ActiveRecord::Base
         end
     end
 
+    def display_upcoming_renewals
+        self.upcoming_renewals.each do |subscription|
+            puts "Service Name: #{subscription.service.name.capitalize}"
+            puts "Will expire on: #{subscription.renewal_date}"
+            puts "-----------------------------------------------------"
+            puts "\n"
+        end
+    end
+
+    def active_reminders
+        self.subscriptions.select {|subscription| !subscription.active_reminder.nil?}
+    end
+
+    def upcoming_renewals
+        self.active_reminders.select do |subscription|
+            DateTime.now > subscription.active_reminder.reminder_date
+        end
+    end
+
+####################################### MVP + METHODS ###########################################
+
+    def print_app_login_info
+        puts "Current SubscriptionTracker Credentials:"
+        puts "\n"
+        puts "Username: #{self.app_username}"
+        puts "Password: #{self.app_password}"
+        puts "\n"
+    end
+
+    def display_full_name
+        "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+    end
+
+    def change_app_password(new_password)
+        self.update(app_password: new_password)
+    end
+
+    def change_app_username(new_username)
+        self.update(app_username: new_username)
+    end
+
 end
