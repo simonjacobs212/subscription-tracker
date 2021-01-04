@@ -2,7 +2,6 @@ class Subscription < ActiveRecord::Base
   belongs_to :service
   belongs_to :user
   has_many :reminders
-  has_many :reminded_users, through: :reminders
 
   after_create :initialize_renewal
 
@@ -30,5 +29,10 @@ class Subscription < ActiveRecord::Base
 
   def active_reminder
     Reminder.find_by(subscription_id: self.id, active: true)
+  end
+
+  def set_reminder(days_notice)
+    reminder = Reminder.find_or_create_by(subscription_id: self.id, active: true)
+    reminder.update(days_notice: days_notice)
   end
 end

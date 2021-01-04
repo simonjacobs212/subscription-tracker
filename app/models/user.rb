@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
     has_many :reminders
     has_many :subscriptions
     has_many :services, through: :subscriptions
-    has_many :reminded_subscriptions, through: :reminders
 
     def change_name(new_first_name, new_last_name)
         self.update(first_name: new_first_name, last_name: new_last_name)
@@ -45,5 +44,6 @@ class User < ActiveRecord::Base
             puts "-----------------------------------------------------"
         end
     end
-    
+
+
 end

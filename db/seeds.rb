@@ -71,15 +71,15 @@ s11 = Subscription.create(service_id: ebay.id, email: "mhoward12@gmail.com", use
 puts "creating reminders"
 
 ######### John has 1 active reminder, 3 inactive
-r1 = Reminder.create(user_id: john.id, subscription_id: s1.id, active: true)
-r2 = Reminder.create(user_id: john.id, subscription_id: s2.id, active: false)
-r3 = Reminder.create(user_id: john.id, subscription_id: s3.id, active: false)
-r4 = Reminder.create(user_id: john.id, subscription_id: s4.id, active: false)
+r1 = Reminder.create(subscription_id: s1.id, active: true)
+r2 = Reminder.create(subscription_id: s2.id, active: false)
+r3 = Reminder.create(subscription_id: s3.id, active: false)
+r4 = Reminder.create(subscription_id: s4.id, active: false)
 
 ######### Mary has reminders for all ###############
-r5 = Reminder.create(user_id: mary.id, subscription_id: s5.id, active: true)
-r6 = Reminder.create(user_id: mary.id, subscription_id: s6.id, active: true)
-r7 = Reminder.create(user_id: mary.id, subscription_id: s11.id, active: true)
+r5 = Reminder.create(subscription_id: s5.id, active: true)
+r6 = Reminder.create(subscription_id: s6.id, active: true)
+r7 = Reminder.create(subscription_id: s11.id, active: true)
 
 ##### Chris has no reminders #####
 ##### Shelly has no services or reminders #####
