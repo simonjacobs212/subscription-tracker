@@ -12,7 +12,7 @@ Reminder.reset_pk_sequence
 Subscription.reset_pk_sequence
 ServiceCategory.reset_pk_sequence
 
-################# creating categories  ##################### 
+puts "creating categories"
 
 video = Category.create(name: "video streaming")
 music = Category.create(name: "music streaming")
@@ -20,7 +20,7 @@ e_com = Category.create(name: "e-commerce")
 gaming = Category.create(name: "gaming")
 live_tv = Category.create(name: "live tv")
 
-################# creating services  ##################### 
+puts "creating services"
 
 netflix = Service.create(name: "netflix", url: "netflix.com")
 hulu = Service.create(name: "hulu", url: "hulu.com")
@@ -33,14 +33,15 @@ twitch = Service.create(name: "twitch", url: "twitch.com")
 wow = Service.create(name: "world of warcraft", url: "worldofwarcraft.com")
 xbox = Service.create(name: "xbox live", url: "xbox.com")
 
-################# creating users  #####################
+puts "creating users"
 
 john = User.create(first_name: "john", last_name: "smith")
 mary = User.create(first_name: "mary", last_name: "howard")
 chris = User.create(first_name: "chris", last_name: "johnson")
 shelly = User.create(first_name: "shelly", last_name: "lansing")
 
-################# creating service categories  #####################
+
+puts "creating service categories"
 
 netflix.categories << video
 hulu.categories << [video, live_tv]
@@ -53,7 +54,8 @@ twitch.categories << video
 wow.categories << gaming
 xbox.categories << [gaming, video]
 
-################# creating subscriptions  #####################
+puts "creating subscriptions"
+
 s1 = Subscription.create(service_id: netflix.id, email: "jsmith@gmail.com", user_id: john.id, duration: 30, cost_per_duration: 0)
 s2 = Subscription.create(service_id: amazon.id, email: "jsmith@gmail.com", user_id: john.id, duration: 365, cost_per_duration: 119.00)
 s3 = Subscription.create(service_id: disney_plus.id, email: "jsmith@gmail.com", user_id: john.id, duration: 365, cost_per_duration: 69.99)
@@ -66,7 +68,7 @@ s9 = Subscription.create(service_id: pandora.id, email: "videolover13@gmail.com"
 s10 = Subscription.create(service_id: xbox.id, email: "videolover13@gmail.com", user_id: chris.id, duration: 90, cost_per_duration: 24.99)
 s11 = Subscription.create(service_id: ebay.id, email: "mhoward12@gmail.com", user_id: mary.id, duration: 30, cost_per_duration: 21.95)
 
-################ creating reminders ############################
+puts "creating reminders"
 
 ######### John has 1 active reminder, 3 inactive
 r1 = Reminder.create(user_id: john.id, subscription_id: s1.id, active: true)
@@ -75,9 +77,12 @@ r3 = Reminder.create(user_id: john.id, subscription_id: s3.id, active: false)
 r4 = Reminder.create(user_id: john.id, subscription_id: s4.id, active: false)
 
 ######### Mary has reminders for all ###############
-r4 = Reminder.create(user_id: john.id, subscription_id: s5.id, active: true)
-r4 = Reminder.create(user_id: john.id, subscription_id: s6.id, active: true)
-r4 = Reminder.create(user_id: john.id, subscription_id: s11.id, active: true)
+r5 = Reminder.create(user_id: mary.id, subscription_id: s5.id, active: true)
+r6 = Reminder.create(user_id: mary.id, subscription_id: s6.id, active: true)
+r7 = Reminder.create(user_id: mary.id, subscription_id: s11.id, active: true)
+
+##### Chris has no reminders #####
+##### Shelly has no services or reminders #####
 
 ###
 
