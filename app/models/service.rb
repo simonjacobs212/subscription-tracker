@@ -4,4 +4,12 @@ class Service < ActiveRecord::Base
   has_many :subscriptions
   has_many :reminders, through: :subscriptions
   has_many :users, through: :subscriptions
+
+
+  def add_category_to_service(category_array)
+    self.categories << category_array
+  end
+
+  
+
 end

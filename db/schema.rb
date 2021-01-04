@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_182904) do
   create_table "reminders", force: :cascade do |t|
     t.integer "user_id"
     t.integer "subscription_id"
-    t.datetime "alert_date"
+    t.integer "days_notice"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

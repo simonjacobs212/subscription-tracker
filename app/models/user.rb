@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
     end
 
     def new_subscription(service_name, email, cost, duration)
-        new_service = Service.find_or_create_by(name: service_name)
         if subscription_exist?(new_service)
             puts "⚠️ ⚠️ You are already subscribed to this service, please go back and modify your existing subscription. ⚠️ ⚠️"
         else
@@ -30,5 +29,21 @@ class User < ActiveRecord::Base
         end
     end
 
+    def delete_user
+        self.destroy
+    end
+
+    def new_service(service_name, url)
+        Service.find_or_create_by(name: service_name, url: url)
+    end
+
+    def display_reminders
+        self.subscriptions.each do |subscription|
+            puts "Service Name: #{subscription.service.name.capitalize}"
+            puts "Cost per #{subscription.duration} days: $#{subscription.cost_per_duration}"
+            puts "Days until expiration: #{subscription.days_remaining}"
+            puts "----------------------------------"
+        end
+    end
     
 end
