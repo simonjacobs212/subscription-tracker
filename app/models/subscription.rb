@@ -42,7 +42,7 @@ class Subscription < ActiveRecord::Base
   end
 
   def display_subscription_info
-    "Service Name: #{self.service.name.capitalize}\n Cost per #{self.duration} days: $#{self.cost_per_duration}\n Days until expiration: #{self.days_remaining}\n--------------------------------------"
+    "Service Name: #{self.service.name.capitalize}\n Cost per #{self.duration} days: $#{sprintf('%.2f', self.cost_per_duration.to_s)}\n Days until expiration: #{self.days_remaining}\n--------------------------------------"
   end
 
   def display_active_reminder_for_subscription
