@@ -19,15 +19,6 @@ class User < ActiveRecord::Base
         !Subscription.find_by(user_id: self.id, service_id: service.id).nil?
     end
 
-    def display_subscriptions
-        self.subscriptions.each do |subscription|
-            puts "Service Name: #{subscription.service.name.capitalize}"
-            puts "Cost per #{subscription.duration} days: $#{subscription.cost_per_duration}"
-            puts "Days until expiration: #{subscription.days_remaining}"
-            puts "----------------------------------"
-        end
-    end
-
     def delete_user
         self.destroy
     end
@@ -39,9 +30,7 @@ class User < ActiveRecord::Base
     def display_reminders
         self.subscriptions.each do |subscription|
             next if subscription.active_reminder.nil?
-            puts "Service Name: #{subscription.service.name.capitalize}"
-            puts "Expiration reminder will be sent on: #{subscription.active_reminder.reminder_date.to_date}"
-            puts "-----------------------------------------------------"
+            subscription.display_active_reminder
         end
     end
 
@@ -61,6 +50,12 @@ class User < ActiveRecord::Base
     def upcoming_renewals
         self.active_reminders.select do |subscription|
             DateTime.now > subscription.active_reminder.reminder_date
+        end
+    end
+
+    def create_subscription_menu_choices
+        self.subscriptions.each_with_object({}) do |subscription, new_hash|
+            new_hash[subscription.display_subscription_info] = subscription
         end
     end
 

@@ -10,7 +10,7 @@ class SubscriptionTracker
     welcome
     @user = login_or_signup
     say_hi_to_user
-    display_active_reminders if !@user.upcoming_renewals.empty?
+    display_active_reminders_for_user if !@user.upcoming_renewals.empty?
     main_menu    
   end
 
@@ -27,10 +27,10 @@ class SubscriptionTracker
     puts "Welcome #{@user.first_name.capitalize}"
   end
 
-  def display_active_reminders
+  def display_active_reminders_for_user
     puts "\n"
     @user.display_upcoming_renewals
-    @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
+    @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     system 'clear'
   end
 
@@ -50,7 +50,5 @@ class SubscriptionTracker
     end
   end
 
-  
-  
 end
 
