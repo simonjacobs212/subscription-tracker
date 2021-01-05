@@ -1,4 +1,4 @@
-module SpendingAnalyzer
+module SpendingAnalyzer 
     
     include CliControls
 
