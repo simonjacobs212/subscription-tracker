@@ -7,13 +7,14 @@ class User < ActiveRecord::Base
         self.update(first_name: new_first_name, last_name: new_last_name)
     end
 
-    # def new_subscription(hash)
-    #     # if subscription_exist?(new_service)
-    #     #     puts "⚠️ ⚠️ You are already subscribed to this service, please go back and modify your existing subscription. ⚠️ ⚠️"
-    #     # else
-    #         Subscription.create(hash)
-    #     # end
-    # end
+    def daily_spending_by_category
+        total = self.subscriptions.each_with_object({}) do |subscription, total|
+            inner_hash = subscription.service.categories.group(:name).sum(subscription.normalize_cost)
+                inner_hash.each do |category, cost|
+                    total[category].nil? ? total[category] = cost : total[category] += cost
+                end
+            end
+    end
 
     def subscription_exist?(service)
         !Subscription.find_by(user_id: self.id, service_id: service.id).nil?
@@ -22,10 +23,6 @@ class User < ActiveRecord::Base
     def delete_user
         self.destroy
     end
-
-    # def new_service(service_name, url)
-    #     Service.find_or_create_by(name: service_name, url: url)
-    # end
 
     def display_reminders
         self.subscriptions.reload.each do |subscription|
