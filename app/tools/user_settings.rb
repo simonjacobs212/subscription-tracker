@@ -48,7 +48,7 @@ module UserSettings
 
   def change_app_password_handler
     @new_app_password = @@prompt.mask("Please enter your new SubscriptionTracker password: ", required: true, mask: @@heart)
-    @repeat_password = @@prompt.mask("Re-enter your SubscriptionTracker to confirm: ", required: true, mask: @@heart)
+    @repeat_password = @@prompt.mask("Re-enter your SubscriptionTracker password to confirm: ", required: true, mask: @@heart)
     validate_new_password
     @user.update(app_password: @new_app_password)
     puts "✅ Your SubscriptionTracker password has been updated to #{@user.app_password}."

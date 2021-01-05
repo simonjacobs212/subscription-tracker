@@ -9,6 +9,10 @@ class Subscription < ActiveRecord::Base
     self.update(renewal_date: (self.created_at.to_datetime + self.duration.days))
   end
 
+  def update_renewal_date
+    self.update(renewal_date: (DateTime.now + self.duration.days))
+  end
+
 
   def days_remaining
     return (self.renewal_date.to_datetime - DateTime.now).to_i if (self.renewal_date.to_datetime - DateTime.now).to_i > 0
@@ -21,6 +25,8 @@ class Subscription < ActiveRecord::Base
 
   def delete_subscription
     self.destroy
+    puts "💥 Your subscription has been deleted."
+    sleep (1.5)
   end
 
   def reminder_exists?

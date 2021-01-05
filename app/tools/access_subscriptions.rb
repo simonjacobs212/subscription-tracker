@@ -39,6 +39,9 @@ module AccessSubscriptions
       @subscription.reminder_exists? ? reminder_menu : no_current_reminder
       sleep (1.5)
       subscription_action
+    when "Update Susbcription"
+      system 'clear'
+      update_subscription_handler
     when "Back"
       system 'clear'
       main_menu
