@@ -1,5 +1,4 @@
 module UserSettings 
-  include CliControls
   include LoginControl
 
   ######################## User Settings ############################

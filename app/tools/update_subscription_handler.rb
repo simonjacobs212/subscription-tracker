@@ -4,8 +4,6 @@ require_relative './access_subscriptions'
 
 module UpdateSubscriptionHandler 
   include CliControls
-  include AccessSubscriptions
-  include NewSubscriptionControl
 
   def update_subscription_handler
     puts @subscription.display_subscription_info

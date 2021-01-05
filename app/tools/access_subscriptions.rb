@@ -1,8 +1,8 @@
 require_all 'app/tools'
 
 module AccessSubscriptions
-  include CliControls
   include NewSubscriptionControl
+  include UpdateSubscriptionHandler
 
   def access_subscriptions
     system 'clear'
