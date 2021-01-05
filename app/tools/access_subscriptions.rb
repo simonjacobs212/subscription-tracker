@@ -32,14 +32,14 @@ module AccessSubscriptions
   def subscription_action
     system 'clear'
     puts @subscription.display_subscription_info
-    subscription_options = ["Access Reminder", "Update Susbcription", "Back", "Logout"]
+    subscription_options = ["Access Reminder", "Update/Delete Susbcription", "Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", subscription_options)
     case selection
     when "Access Reminder"
       @subscription.reminder_exists? ? reminder_menu : no_current_reminder
       sleep (1.5)
       subscription_action
-    when "Update Susbcription"
+    when "Update/Delete Susbcription"
       system 'clear'
       update_subscription_handler
     when "Back"

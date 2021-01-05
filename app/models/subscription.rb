@@ -57,4 +57,8 @@ class Subscription < ActiveRecord::Base
     puts "-----------------------------------------------------"
   end
 
+  def normalize_cost
+    self.cost_per_duration / self.duration
+  end
+
 end

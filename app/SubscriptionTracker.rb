@@ -1,10 +1,7 @@
 class SubscriptionTracker
   include UserSettings
   include AccessSubscriptions
-
-
-  # here will be your CLI!
-  # it is not an AR class so you need to add attr
+  include SpendingAnalyzer
 
   def run
     welcome
@@ -35,13 +32,15 @@ class SubscriptionTracker
   end
 
   def main_menu
-    choices = ["My Subscriptions", "Access User Settings", "Logout"]
+    choices = ["My Subscriptions", "Access User Settings", "Spending Summary", "Logout"]
     selection = @@prompt.select("What would you like to do today?", choices)
     case selection
     when "My Subscriptions" 
       access_subscriptions
     when "Access User Settings"
       user_settings
+    when "Spending Summary"
+      spending_summary
     when "Logout"
       system 'clear'
       run

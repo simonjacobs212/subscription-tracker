@@ -18,11 +18,11 @@ Delete subscription -->
 MVP+
 View spending by category and/or service
 
-Develop Schema & Associations & Seed  - done
+<!-- Develop Schema & Associations & Seed  - done
 Develop CRUD methods - done
-Develop CLI Interface - WIP
+Develop CLI Interface - WIP -->
 
-Begin stretch goals: 
+Begin stretch goals:
 log into the application or make new account
 Delete User’s app account & data
 View spending by category and/or service

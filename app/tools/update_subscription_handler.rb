@@ -10,26 +10,26 @@ module UpdateSubscriptionHandler
     update_subscription
   end
 
-    def update_subscription
-      choices = ["Update cost/duration", "Delete Subscription", "Back", "Logout"]
-      selection = @@prompt.select("What would you like to do for the subscription above? ", choices)
-      case selection
-      when "Update cost/duration"
-        update_subcription_info
-        disable_old_reminder if @subscription.reminder_exists?
-        set_new_reminder if want_new_reminder? 
-        access_subscriptions
-      when "Delete Subscription"
-        @subscription.delete_subscription if confirm_delete? 
-        access_subscriptions
-      when "Back"
-        system 'clear'
-        access_subscriptions
-      when "Logout"
-        system 'clear'
-        run
-      end
+  def update_subscription
+    choices = ["Update cost/duration", "Delete Subscription", "Back", "Logout"]
+    selection = @@prompt.select("What would you like to do for the subscription above? ", choices)
+    case selection
+    when "Update cost/duration"
+      update_subcription_info
+      disable_old_reminder if @subscription.reminder_exists?
+      set_new_reminder if want_new_reminder? 
+      access_subscriptions
+    when "Delete Subscription"
+      @subscription.delete_subscription if confirm_delete? 
+      access_subscriptions
+    when "Back"
+      system 'clear'
+      access_subscriptions
+    when "Logout"
+      system 'clear'
+      run
     end
+  end
 
     def update_subcription_info
       new_sub_info = @@prompt.collect do

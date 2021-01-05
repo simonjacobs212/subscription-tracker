@@ -81,4 +81,24 @@ class User < ActiveRecord::Base
         self.update(app_username: new_username)
     end
 
+    def spending_per_day
+        self.subscriptions.sum do |subscription|
+            subscription.normalize_cost
+        end
+    end
+
+    def spending_per_month
+        self.spending_per_day * 30
+    end 
+
+    def spending_per_year
+        self.spending_per_day * 365
+    end
+
+    def most_expensive_subscription
+        self.subscriptions.max do |subscription|
+            subscription.normalize_cost
+        end
+    end
+
 end
