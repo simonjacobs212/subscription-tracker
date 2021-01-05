@@ -35,15 +35,13 @@ class SubscriptionTracker
   end
 
   def main_menu
-    choices = ["Subscriptions", "View Reminders", "Access User Settings", "Logout"]
+    choices = ["Subscriptions", "Access User Settings", "Logout"]
     selection = @@prompt.select("What would you like to do today?", choices)
     case selection
     when "Subscriptions" 
       access_subscriptions
     when "Access User Settings"
       user_settings
-    when "View Reminders"
-      # view_reminders
     when "Logout"
       system 'clear'
       run

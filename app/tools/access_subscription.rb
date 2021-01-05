@@ -12,21 +12,19 @@ module AccessSubscriptions
 
   def pick_subscription
     choices = @user.create_subscription_menu_choices
-    subscription = @@prompt.select("Which subscription would like to access?", choices)
+    @@prompt.select("Which subscription would like to access?\n--------------------------------------\n", choices)
   end
 
   def subscription_action
     system 'clear'
-    @subscription.display_subscription_info
-    subscription_options = ["View Reminder", "Disable Reminder", "Create New Reminder", "Update Susbcription"]
+    puts @subscription.display_subscription_info
+    subscription_options = ["Access Reminder", "Update Susbcription", "Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", subscription_options)
     case selection
-    when "View Reminder"
-      @subscription.display_active_reminder_for_subscription
-      @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
+    when "Access Reminder"
+      @subscription.reminder_exists? ? reminder_menu : no_current_reminder
+      sleep (1.5)
       subscription_action
-    when "Disable Reminder"
-      # change_app_password_handler
     when "Back"
       system 'clear'
       main_menu
@@ -34,6 +32,43 @@ module AccessSubscriptions
       system 'clear'
       run
     end
+  end
+
+  def reminder_menu
+    system 'clear'
+    @subscription.display_active_reminder_for_subscription
+    choices = ["Modify Reminder", "Back", "Logout"]
+    selection = @@prompt.select("What would you like to do?", choice)
+    case selection
+    when "Modify Reminder"
+
+
+    when "Back"
+      system 'clear'
+      main_menu
+    when "Logout"
+      system 'clear'
+      run
+    end
+  end
+
+  def no_current_reminder
+    puts "⚠️ No reminder is currently set for this subscription."
+    yes_no("Would you like to set one now?") ? set_new_reminder : subscription_action
+  end
+
+  def ask_days_notice
+    days_notice = @@prompt.ask("Enter the number of days (1-99) in advance of the renewal date that you would like to be notified: ") do |response|
+      response.validate(/\b[0-9]{1,2}\b/)
+      response.messages[:valid?] = 'Invalid entry number. Please enter the number of DAYS notice (1-99) you want for this reminder.'
+    end
+    days_notice.to_i
+  end
+
+  def set_new_reminder
+    days_notice = ask_days_notice
+    @subscription.set_reminder(days_notice)
+    reminder_menu
   end
 
 end
