@@ -2,6 +2,7 @@ class SubscriptionTracker
   include CliControls
   include LoginControl
   include UserSettings
+  include AccessSubscriptions
   # here will be your CLI!
   # it is not an AR class so you need to add attr
 
@@ -10,7 +11,7 @@ class SubscriptionTracker
     @user = login_or_signup
     say_hi_to_user
     display_active_reminders if !@user.upcoming_renewals.empty?
-    initial_menu    
+    main_menu    
   end
 
   private
@@ -33,19 +34,19 @@ class SubscriptionTracker
     system 'clear'
   end
 
-  def initial_menu
-    choices = ["View Subscriptions", "View Reminders", "Access User Settings", "Logout"]
+  def main_menu
+    choices = ["Subscriptions", "View Reminders", "Access User Settings", "Logout"]
     selection = @@prompt.select("What would you like to do today?", choices)
     case selection
-    when "View Subscriptions" 
-      # view_subscriptions
+    when "Subscriptions" 
+      access_subscriptions
     when "Access User Settings"
       user_settings
     when "View Reminders"
       # view_reminders
     when "Logout"
-      run
       system 'clear'
+      run
     end
   end
 

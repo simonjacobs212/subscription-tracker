@@ -22,10 +22,11 @@ module UserSettings
     when "Change SubscriptionTracker Password"
       change_app_password_handler
     when "Back"
-      initial_menu
-    when "Logout"
-      run
       system 'clear'
+      main_menu
+    when "Logout"
+      system 'clear'
+      run
     end
   end
 
