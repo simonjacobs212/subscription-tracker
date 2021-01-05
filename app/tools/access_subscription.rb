@@ -37,12 +37,13 @@ module AccessSubscriptions
   def reminder_menu
     system 'clear'
     @subscription.display_active_reminder_for_subscription
-    choices = ["Modify Reminder", "Back", "Logout"]
-    selection = @@prompt.select("What would you like to do?", choice)
+    choices = ["Change Days Notice", "Disable Reminder", "Back", "Logout"]
+    selection = @@prompt.select("What would you like to do?", choices)
     case selection
-    when "Modify Reminder"
-
-
+    when "Change Days Notice"
+      set_new_reminder
+    when "Disable Reminder"
+      disable_reminder
     when "Back"
       system 'clear'
       main_menu
@@ -68,7 +69,14 @@ module AccessSubscriptions
   def set_new_reminder
     days_notice = ask_days_notice
     @subscription.set_reminder(days_notice)
+    puts "Your reminder has been set for #{days_notice} days before #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")}."
+    sleep(1.5)
     reminder_menu
   end
+
+  def disable_reminder
+    puts "⚠️ You will no longer be notified of the renewal date for this subscription."
+    yes_no("Do you wish to continue?") ? @subscription.disable_reminder_for_subscription : reminder_menu
+  end 
 
 end

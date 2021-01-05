@@ -47,7 +47,7 @@ class Subscription < ActiveRecord::Base
 
   def display_active_reminder_for_subscription
     puts "Service Name: #{self.service.name.capitalize}"
-    puts "Expiration reminder will be sent on: #{self.active_reminder.reminder_date.to_date}"
+    puts "Expiration reminder will be sent on: #{self.active_reminder.reminder_date.strftime("%b %d %Y")}"
     puts "-----------------------------------------------------"
   end
 
