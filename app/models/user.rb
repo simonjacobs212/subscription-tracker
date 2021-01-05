@@ -7,13 +7,13 @@ class User < ActiveRecord::Base
         self.update(first_name: new_first_name, last_name: new_last_name)
     end
 
-    def new_subscription(service_name, email, cost, duration)
-        if subscription_exist?(new_service)
-            puts "⚠️ ⚠️ You are already subscribed to this service, please go back and modify your existing subscription. ⚠️ ⚠️"
-        else
-            Subscription.create(service_id: new_service.id, email: email, user_id: self.id, cost_per_duration: cost.to_f, duration: duration.to_i)
-        end
-    end
+    # def new_subscription(hash)
+    #     # if subscription_exist?(new_service)
+    #     #     puts "⚠️ ⚠️ You are already subscribed to this service, please go back and modify your existing subscription. ⚠️ ⚠️"
+    #     # else
+    #         Subscription.create(hash)
+    #     # end
+    # end
 
     def subscription_exist?(service)
         !Subscription.find_by(user_id: self.id, service_id: service.id).nil?
@@ -23,9 +23,9 @@ class User < ActiveRecord::Base
         self.destroy
     end
 
-    def new_service(service_name, url)
-        Service.find_or_create_by(name: service_name, url: url)
-    end
+    # def new_service(service_name, url)
+    #     Service.find_or_create_by(name: service_name, url: url)
+    # end
 
     def display_reminders
         self.subscriptions.each do |subscription|
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
     def display_upcoming_renewals
         self.upcoming_renewals.each do |subscription|
-            puts "Service Name: #{subscription.service.name.capitalize}"
+            puts "Service Name: #{subscription.service.name}"
             puts "Will expire on: #{subscription.renewal_date}"
             puts "-----------------------------------------------------"
             puts "\n"

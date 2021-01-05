@@ -2,16 +2,18 @@ require_all 'app/tools'
 
 module AccessSubscriptions
   include CliControls
-  include LoginControl
+  include NewSubscriptionControl
 
   def access_subscriptions
     system 'clear'
     @subscription = pick_subscription
+    add_new_subscription if @subscription == "Add New Subscription"
     subscription_action
   end
 
   def pick_subscription
     choices = @user.create_subscription_menu_choices
+    choices["Add New Subscription"] = "Add New Subscription"
     @@prompt.select("Which subscription would like to access?\n--------------------------------------\n", choices)
   end
 

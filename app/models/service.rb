@@ -10,6 +10,10 @@ class Service < ActiveRecord::Base
     self.categories << category_array
   end
 
-  
+  def self.create_service_menu_choices
+    self.all.each_with_object({}) do |service, new_hash|
+      new_hash[service.name] = service
+    end
+  end
 
 end

@@ -3,6 +3,7 @@ class SubscriptionTracker
   include LoginControl
   include UserSettings
   include AccessSubscriptions
+
   # here will be your CLI!
   # it is not an AR class so you need to add attr
 
@@ -35,10 +36,10 @@ class SubscriptionTracker
   end
 
   def main_menu
-    choices = ["Subscriptions", "Access User Settings", "Logout"]
+    choices = ["My Subscriptions", "Access User Settings", "Logout"]
     selection = @@prompt.select("What would you like to do today?", choices)
     case selection
-    when "Subscriptions" 
+    when "My Subscriptions" 
       access_subscriptions
     when "Access User Settings"
       user_settings

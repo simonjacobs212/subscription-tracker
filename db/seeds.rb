@@ -22,16 +22,16 @@ live_tv = Category.create(name: "live tv")
 
 puts "creating services"
 
-netflix = Service.create(name: "netflix", url: "netflix.com")
-hulu = Service.create(name: "hulu", url: "hulu.com")
-amazon = Service.create(name: "amazon", url: "amazon.com")
-disney_plus = Service.create(name: "disney+", url: "disneyplus.com")
-spotify = Service.create(name: "spotify", url: "spotify.com")
-pandora = Service.create(name: "pandora", url: "pandora.com")
-ebay = Service.create(name: "ebay", url: "ebay.com")
-twitch = Service.create(name: "twitch", url: "twitch.com")
-wow = Service.create(name: "world of warcraft", url: "worldofwarcraft.com")
-xbox = Service.create(name: "xbox live", url: "xbox.com")
+netflix = Service.create(name: "Netflix", url: "netflix.com")
+hulu = Service.create(name: "Hulu", url: "hulu.com")
+amazon = Service.create(name: "Amazon", url: "amazon.com")
+disney_plus = Service.create(name: "Disney+", url: "disneyplus.com")
+spotify = Service.create(name: "Spotify", url: "spotify.com")
+pandora = Service.create(name: "Pandora", url: "pandora.com")
+ebay = Service.create(name: "Ebay", url: "ebay.com")
+twitch = Service.create(name: "Twitch", url: "twitch.com")
+wow = Service.create(name: "World of Warcraft", url: "worldofwarcraft.com")
+xbox = Service.create(name: "Xbox Live", url: "xbox.com")
 
 puts "creating users"
 
