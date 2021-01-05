@@ -11,25 +11,24 @@ module NewSubscriptionControl
         response.validate(/\A\w+@\w+\.\w+\Z/)
         response.messages[:valid?] = "Invalid email address. Please try again."
       end
-      # key(:duration).ask("How many days in this subscription for? (1 month = 30, 1 year = 365)") do |response|
-      #   response.validate(/\b[1-9]\d{0,2}\b/)
-      #   response.messages[:valid?] = "Invalid duration. Please enter a plan duration between 1 and 365."
-      #   response.to_i
-      # end
-      # key(:cost_per_duration).ask("What is the cost of your plan for the duration you provided? ") do |response| 
-      #   response.to_s.validate(/\A\d{1,4}\.\d{2}/)
-      #   response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
-      #   response.to_f
-      # end
+      key(:duration).ask("How many days in this subscription for? (1 month = 30, 1 year = 365) ", convert: :int) do |response|
+        response.validate(/\b[1-9]\d{0,2}\b/)
+        response.messages[:valid?] = "Invalid duration. Please enter a plan duration between 1 and 365."
+      end
+      key(:cost_per_duration).ask("What is the cost of your plan for the duration you provided? (If this is a free trial, enter 0.00) ", convert: :float) do |response| 
+        response.validate(/\A\d{1,4}\.\d{2}/)
+        response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
+      end
     end
-    new_subscription_info_hash[service_id: @service.id, user_id: @user.id]
-    binding.pry
+    new_subscription_info_hash[:service_id] = @service.id
+    new_subscription_info_hash[:user_id] = @user.id
     Subscription.create(new_subscription_info_hash)
+    access_subscriptions
   end
 
   def pick_service
     choices = Service.create_service_menu_choices
-    @@prompt.select("Which service's subscription would like to add to track?\n-------------------------------------------------\n", choices)
+    @@prompt.select("Which service did you subscribe to? (Begin typing the name to filter results)\n----------------------------------------------------------------------------\n", choices, filter: true)
   end
 
 end

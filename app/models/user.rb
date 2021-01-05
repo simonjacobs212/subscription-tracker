@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     # end
 
     def display_reminders
-        self.subscriptions.each do |subscription|
+        self.subscriptions.reload.each do |subscription|
             next if subscription.active_reminder.nil?
             subscription.display_active_reminder
         end
@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     end
 
     def active_reminders
-        self.subscriptions.select {|subscription| !subscription.active_reminder.nil?}
+        self.subscriptions.reload.select {|subscription| !subscription.active_reminder.nil?}
     end
 
     def upcoming_renewals
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     end
 
     def create_subscription_menu_choices
-        self.subscriptions.each_with_object({}) do |subscription, new_hash|
+        self.subscriptions.reload.each_with_object({}) do |subscription, new_hash|
             new_hash[subscription.display_subscription_info] = subscription
         end
     end

@@ -7,13 +7,25 @@ module AccessSubscriptions
   def access_subscriptions
     system 'clear'
     @subscription = pick_subscription
-    add_new_subscription if @subscription == "Add New Subscription"
-    subscription_action
+    case @subscription
+    when "Add New Subscription"
+      add_new_subscription
+    when "Back"
+      system 'clear'
+      main_menu
+    when "Logout"
+      system 'clear'
+      run
+    else
+      subscription_action
+    end
   end
 
   def pick_subscription
     choices = @user.create_subscription_menu_choices
     choices["Add New Subscription"] = "Add New Subscription"
+    choices["Back"] = "Back"
+    choices["Logout"] = "Logout"
     @@prompt.select("Which subscription would like to access?\n--------------------------------------\n", choices)
   end
 

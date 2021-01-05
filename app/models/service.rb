@@ -11,7 +11,7 @@ class Service < ActiveRecord::Base
   end
 
   def self.create_service_menu_choices
-    self.all.each_with_object({}) do |service, new_hash|
+    self.all.reload.each_with_object({}) do |service, new_hash|
       new_hash[service.name] = service
     end
   end
