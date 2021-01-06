@@ -87,7 +87,7 @@ module AccessSubscriptions
   def set_new_reminder
     days_notice = ask_days_notice
     @subscription.set_reminder(days_notice)
-    puts "Your reminder has been set for #{days_notice} days before #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")}."
+    puts "Your reminder has been set for #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")} which will provide #{days_notice} days notice."
     @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
   end
 

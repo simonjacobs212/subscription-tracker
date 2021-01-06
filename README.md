@@ -26,22 +26,22 @@ This app is designed to keep tracker of your free and paid subscriptions such as
   * [2.3 Interface Modules](#23-interface-modules)
   * [2.4 Stretch Goals](#24-stretch-goals)
 ---
-### 1. Using the App
-#### 1.1 Launching the App
+## 1. Using the App
+### 1.1 Launching the App
 To launch the app, navigate to the parent directory.
 
 Use the rake command `rake start` in the terminal to launch the app.
 
-#### 1.2 Logging In
-##### 1.2.1 New Users
+### 1.2 Logging In
+#### 1.2.1 New Users
 If you have not previously made an account with SubscriptionTracker, select <strong>New User</strong> from the main menu.
 * The app will ask you for your first and last name, as well as a username and password in order to create an account.
 * If the username you have selected is already in use, you will be prompted to pick a new username
-##### 1.2.2 Existing Users
+#### 1.2.2 Existing Users
 If you have previously made an account with Subscriptiontracker, enter the username and password that you selected when you made the account.
-#### 1.3 App Features
+### 1.3 App Features
 Use the main menu to navigate through the app. The major features are described individualy below.
-##### 1.3.1 My Subscriptions
+#### 1.3.1 My Subscriptions
 ##### 1.3.1.1 Viewing Subscriptions
 If you have already added subscriptions to you SubscriptionTracker account, selecting <strong>My Subscriptions</strong> will display a menu of all of your current subscriptions and the subscription details such as cost, duration, and renewal date. 
 * Pressing `enter` on any of the current subscriptions will select that subscription and allow you to:
@@ -65,7 +65,20 @@ Selecting this option will allow you to add a new subscription to your Subscript
 * After successfully adding a new subscription to your SubscriptionTracker Account, it will automatically give you the option to [setup a new reminder](#132-reminders)
 
 ##### 1.3.1.3 Update Subscription
-
+After selecting a current subsction, choose <strong>Update/Delete Subscription</strong> from the subscription menu.
+* In order to update the details of your subscription plan such as cost or plan duration, select <strong>Update cost/duration</strong> from the next menu
+* When updating the plan details, ensure to follow all of the smae guidelines for entering the cost and plan duration that you followed when initially creating the subscription. Those details are listed below again for your convenience.
+  * <strong>Subscription Duration:</strong> Enter the duration of the subscription plan in days.
+    * For a recurring 1 month subscription, enter `30`
+    * For a recurring 3 month subscription, enter `90`
+    * For a recurring 1 year subscription, enter `365`
+  * <strong>Cost of Subscription:</strong> Enter the cost of the subscription per the recurring duration. For example, if you have a monthly plan, enter the monthly cost. If you have an annual plan, enter the annual cost.
+    * The cost <strong>must</strong> be entered in standard monetary format, without the dollar sign.
+      * Ex: $5 should be entered as 5.00
+##### 1.3.1.4 Delete Subscription
+After selecting a current subsction, choose <strong>Update/Delete Subscription</strong> from the subscription menu.
+* In order to delete a subscription plan from your SubscriptionTracker app acount, select <strong>Delete Subscription</strong> from the next menu
+  * <span style= "color:red"></span> 
 
 
 
