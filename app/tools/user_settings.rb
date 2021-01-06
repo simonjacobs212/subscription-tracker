@@ -31,7 +31,7 @@ module UserSettings
       system 'clear'
       run
     end
-  end
+  end 
 
   def change_app_username_handler
     @new_app_username = @@prompt.ask("Please enter your new SubscriptionTracker username: ", required: true)
@@ -40,7 +40,7 @@ module UserSettings
     puts "✅ Your SubscriptionTracker username has been updated to #{@user.app_username}.".green
     @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
     user_settings
-  end
+  end 
 
   def validate_new_username
     if !app_username_available?(@new_app_username)
