@@ -3,6 +3,7 @@ require_all 'app/tools'
 module AccessSubscriptions
   include NewSubscriptionControl
   include UpdateSubscriptionHandler
+  include CalendarHandler
 
   def access_subscriptions
     system 'clear'
@@ -58,8 +59,8 @@ module AccessSubscriptions
     selection = @@prompt.select("What would you like to do?", choices)
     case selection
     when "Change Days Notice"
-      set_new_reminder
-      reminder_menu
+      create_reminder_and_file
+      access_subscriptions
     when "Disable Reminder"
       disable_reminder
     when "Back"
@@ -73,7 +74,7 @@ module AccessSubscriptions
 
   def no_current_reminder
     puts "⚠️ No reminder is currently set for this subscription."
-    yes_no("Would you like to set one now?") ? set_new_reminder : subscription_action
+    yes_no("Would you like to set one now?") ? create_reminder_and_file : subscription_action
   end
 
   def ask_days_notice
@@ -94,6 +95,25 @@ module AccessSubscriptions
   def disable_reminder
     puts "⚠️ You will no longer be notified of the renewal date for this subscription."
     yes_no("Do you wish to continue?") ? @subscription.disable_reminder_for_subscription : reminder_menu
-  end 
+  end
+
+  def create_reminder_and_file
+    set_new_reminder
+    create_calendar_reminder if make_calendar_event?
+  end
+
+  def make_calendar_event?
+    yes_no("Would you like to add an event to your calendar for this reminder?")
+  end
+
+  def create_calendar_reminder
+    @reminder = @subscription.active_reminder
+    event = @reminder.create_event_obj #NOT FINAL
+    @user.create_user_directory
+    create_calendar_obj(event)
+    filename = @reminder.create_reminder_filename
+    create_ics_file(filename)
+    open_ics_file(filename)
+  end
 
 end
