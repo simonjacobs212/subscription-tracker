@@ -7,41 +7,43 @@ This app is designed to keep tracker of your free and paid subscriptions such as
 
 ---
 ## Table of Contents
-* [1. Using the App](#1-usage)
-  * [1.1 Launching the App](#11-launching-the-app)
-  * [1.2 Logging In](#12-logging-in)
-    * [1.2.1 New Users](#121-new-users)
-    * [1.2.2 Existing Users](#122-existing-users)
-  * [1.3 App Features](#13-app-features)
-    * [1.3.1 My Subscriptions](#131-my-subscriptions)
-      * [1.3.1.1 Viewing Subscriptions](#1311-viewing-subscriptions)
-      * [1.3.1.2 Adding New Subscriptions](#1312-adding-new-subscriptions)
-      * [1.3.1.3 Update Subscription](#1313-update-subscription)
-      * [1.3.1.4 Delete Subscription](#1314-delete-subscription)
-      * [1.3.1.5 Access Reminders](#1315-access-reminders)
-    * [1.3.2 Spending Analyzer](#132-spending-analyzer)
-    * [1.3.3 Reminders](#133-reminders)
-      * [1.3.3.1 Change Days Notice](#1331-change-days-notice)
-      * [1.3.3.2 Disable Reminder](#1332-disable-reminder)
-    * [1.3.4 User Settings](#134-user-settings)
-      * [1.3.4.1 Change SubscriptionTracker Username](#1341-change-subscriptiontracker-username)
-      * [1.3.4.2 Change SubscriptionTracker Password](#1342-change-subscriptiontracker-password)
-* [2. App Design](#2-app-design)
-  * [2.1 Domain Model (ERD)](#21-domain-model-erd) 
-  * [2.2 Model Associations](#22-model-associations)
-  * [2.3 Interface Modules](#23-interface-modules)
-  * [2.4 MVP](#24-mvp)
-    * [2.4.1 User](#241-user)
-    * [2.4.2 Subscription](#242-subscription)
-    * [2.4.3 Service](#243-service)
-    * [2.4.4 Reminder](#244-reminder)
-    * [2.4.5 Seeds](#245-seeds)
-    * [2.4.6 CLI](#246-cli)
-  * [2.5 Stretch Goals](#24-stretch-goals)
-    * [2.5.1 README in Markdown](#251-readme-in-markdown)
-    * [2.5.2 User Login System](#252-user-login-system)
-    * [2.5.3 Modularize Main App](#253-modularize-main-app)
-    * [2.5.4 Reminders link to User's Calendar App](#254-reminders-link-to-user's-calendar-app)
+- [Welcome to Subscription Tracker!](#welcome-to-subscription-tracker)
+- [Table of Contents](#table-of-contents)
+- [1. Using the App](#1-using-the-app)
+  - [1.1 Launching the App](#11-launching-the-app)
+  - [1.2 Logging In](#12-logging-in)
+    - [1.2.1 New Users](#121-new-users)
+    - [1.2.2 Existing Users](#122-existing-users)
+  - [1.3 App Features](#13-app-features)
+    - [1.3.1 My Subscriptions](#131-my-subscriptions)
+      - [1.3.1.1 Viewing Subscriptions](#1311-viewing-subscriptions)
+      - [1.3.1.2 Adding New Subscriptions](#1312-adding-new-subscriptions)
+      - [1.3.1.3 Update Subscription](#1313-update-subscription)
+      - [1.3.1.4 Delete Subscription](#1314-delete-subscription)
+      - [1.3.1.5 Access Reminders](#1315-access-reminders)
+    - [1.3.2 Spending Analyzer](#132-spending-analyzer)
+    - [1.3.3 Reminders](#133-reminders)
+      - [1.3.3.1 Change Days Notice](#1331-change-days-notice)
+      - [1.3.3.2 Disable Reminder](#1332-disable-reminder)
+    - [1.3.4 User Settings](#134-user-settings)
+      - [1.3.4.1 Change SubscriptionTracker Username](#1341-change-subscriptiontracker-username)
+      - [1.3.4.2 Change SubscriptionTracker Password](#1342-change-subscriptiontracker-password)
+- [2. App Design](#2-app-design)
+  - [2.1 Domain Model (ERD)](#21-domain-model-erd)
+  - [2.2 Model Associations](#22-model-associations)
+  - [2.3 Interface Modules](#23-interface-modules)
+  - [2.4 MVP](#24-mvp)
+    - [2.4.1 User](#241-user)
+    - [2.4.2 Subscription](#242-subscription)
+    - [2.4.3 Service](#243-service)
+    - [2.4.4 Reminder](#244-reminder)
+    - [2.4.5 Seeds](#245-seeds)
+    - [2.4.6 CLI](#246-cli)
+  - [2.5 Stetch Goals](#25-stetch-goals)
+    - [2.5.1 README in Markdown](#251-readme-in-markdown)
+    - [2.5.2 User Login System](#252-user-login-system)
+    - [2.5.3 Modularize Main App](#253-modularize-main-app)
+    - [2.5.4 Reminders link to User's Calendar App](#254-reminders-link-to-users-calendar-app)
 ---
 ## 1. Using the App
 ### 1.1 Launching the App
@@ -223,11 +225,6 @@ Status: :white_check_mark:
 
 #### 2.5.4 Reminders link to User's Calendar App 
 Status: :x:
-
-
-
-
-
 
 <h1><strong>Not Yet Done</strong></h1>
 

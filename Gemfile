@@ -14,3 +14,4 @@ gem "colorize"
 gem "tty-prompt"
 gem 'twilio-ruby'
 gem 'dotenv'
+gem "tty-table"

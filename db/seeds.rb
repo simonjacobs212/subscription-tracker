@@ -14,11 +14,11 @@ ServiceCategory.reset_pk_sequence
 
 puts "creating categories"
 
-video = Category.create(name: "video streaming")
-music = Category.create(name: "music streaming")
-e_com = Category.create(name: "e-commerce")
-gaming = Category.create(name: "gaming")
-live_tv = Category.create(name: "live tv")
+video = Category.create(name: "Video Streaming")
+music = Category.create(name: "Music Streaming")
+e_com = Category.create(name: "E-Commerce")
+gaming = Category.create(name: "Gaming")
+live_tv = Category.create(name: "Live TV")
 
 puts "creating services"
 

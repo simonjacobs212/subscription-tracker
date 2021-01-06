@@ -3,34 +3,65 @@ module SpendingAnalyzer
     include CliControls
 
     def spending_summary
-        total_cost_per_month
-        total_cost_per_year
-        most_expensive_service
-        cost_by_category
-        duplicate_spending
+        system 'clear'
+        choices = ["View Overall Spending", "View Spending by Category", "View Most Expensive Subscription", "Back", "Logout"]
+        selection = @@prompt.select("What would you like to do?", choices)
+        case selection
+        when "View Overall Spending"
+            system 'clear' 
+            overall_spending_summary
+            spending_summary
+        when "View Spending by Category"
+            system 'clear'
+            display_spending_by_category
+            spending_summary
+        when "View Most Expensive Subscription"
+            system 'clear'
+            display_most_expensive_subscription
+            spending_summary
+        when "Back"
+            system 'clear'
+            main_menu
+        when "Logout"
+            system 'clear'
+            run
+        end
     end
 
-    def display_spending_summary
-        system 'clear'
+    def overall_spending_summary
         puts "Spending Summary"
-        puts "-----------------------------------"
-        puts "Your total daily spending is: #{sprintf('%.2f', @user.spending_per_day.round(2))}"
-        puts "-----------------------------------"
-        puts "Your total monthly spending is: #{sprintf('%.2f', @user.spending_per_month.round(2))}"
-        puts "-----------------------------------"
-        puts "Your total yearly spending is: #{sprintf('%.2f', @user.spending_per_year.round(2))}"
-        puts "-----------------------------------"
+        puts "--------------------------------------------------"
+        puts "Your total daily spending is: $#{sprintf('%.2f', @user.spending_per_day.round(2))}"
+        puts "--------------------------------------------------"
+        puts "Your total monthly spending is: $#{sprintf('%.2f', @user.spending_per_month.round(2))}"
+        puts "--------------------------------------------------"
+        puts "Your total yearly spending is: $#{sprintf('%.2f', @user.spending_per_year.round(2))}"
+        puts "--------------------------------------------------"
+        @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
 
     def display_most_expensive_subscription
         system 'clear'
-        puts "Your most expensive subscription is #{@user.most_expensive_service.name}."
-        puts "With a cost per day of $#{sprintf('%.2f', @user.most_expensive_service.normalize_cost.round(2))}."
+        puts "Your most expensive subscription is #{@user.most_expensive_subscription.service.name}."
+        puts "Cost per day: $#{sprintf('%.2f', @user.most_expensive_subscription.normalize_cost.round(2))}."
+        puts "Cost per month: $#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 30).round(2))}."
+        puts "Cost per year: $#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 365).round(2))}."
+        @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
 
-    # def cost_by_category
-    #     @user.daily_spending_by_category
-    # end
-
+    def display_spending_by_category
+        rows = @user.daily_spending_by_category.each_with_object([]) do |(category, price), new_array|
+            new_array << [category, "$#{sprintf('%.2f', (price * 30).round(2))}", "$#{sprintf('%.2f', (price * 365).round(2))}"]
+        end
+        puts "Please note some of your services may have multiple categories."
+        puts "This may potentially result in exact duplicate costs."
+        puts "---------------------------------------------------------------"
+        table = TTY::Table.new(["Category","Monthly Cost","Yearly Cost"], rows)
+        binding.pry
+        puts table.render(:basic)
+        @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
+    end
+    
+    
 
 end
