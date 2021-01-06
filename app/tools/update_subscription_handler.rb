@@ -43,7 +43,7 @@ module UpdateSubscriptionHandler
         end
       end
         @subscription.update(new_sub_info)
-        @subscription.update_renewal_date(new_sub_info[:duration])
+        @subscription.update_renewal_date
         puts "✅ Your subscription information has been updated"
         sleep (1.5)
     end

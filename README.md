@@ -44,8 +44,10 @@ Use the main menu to navigate through the app. The major features are described 
 ##### 1.3.1 My Subscriptions
 ##### 1.3.1.1 Viewing Subscriptions
 If you have already added subscriptions to you SubscriptionTracker account, selecting <strong>My Subscriptions</strong> will display a menu of all of your current subscriptions and the subscription details such as cost, duration, and renewal date. 
-* Pressing `enter` on any of the current subscriptions will select that subscription and allow you to set up or modify the [reminder](#132-reminders) for this subscription.
-  * Below the list of subscriptions, or if you have not already added some, you will see an option to [add a new subscription](#1312-adding-new-subscriptions).
+* Pressing `enter` on any of the current subscriptions will select that subscription and allow you to:
+  * [Update the subscription](#1313-update-subscription) details such as cost or plan duration.
+  * Set up or modify the [reminder](#132-reminders) for this subscription.
+* Below the list of subscriptions, or if you have not already added some, you will see an option to [add a new subscription](#1312-adding-new-subscriptions).
 
 ##### 1.3.1.2 Adding New Subscriptions
 Selecting this option will allow you to add a new subscription to your SubscriptionTracker account.
@@ -60,15 +62,14 @@ Selecting this option will allow you to add a new subscription to your Subscript
   * <strong>Cost of Subscription:</strong> Enter the cost of the subscription per the recurring duration. For example, if you have a monthly plan, enter the monthly cost. If you have an annual plan, enter the annual cost.
     * The cost <strong>must</strong> be entered in standard monetary format, without the dollar sign.
       * Ex: $5 should be entered as 5.00
-  
-  
+* After successfully adding a new subscription to your SubscriptionTracker Account, it will automatically give you the option to [setup a new reminder](#132-reminders)
+
+##### 1.3.1.3 Update Subscription
 
 
 
 
-      * [1.3.1.1 Viewing Subscriptions](#1311-viewing-subscriptions)
-      * [1.3.1.2 Adding New Subscriptions](#1312-adding-new-subscriptions)
-      * [1.3.1.3 Update Subscription](#1313-update-subscription)
+
       * [1.3.1.4 Delete Subscription](#1314-delete-subscription)
       * [1.3.1.5 Access Reminders](#1315-access-reminders)
     * [1.3.2 Reminders](#132-reminders)
