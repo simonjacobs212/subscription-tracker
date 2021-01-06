@@ -13,13 +13,15 @@ module UserSettings
   end
 
   def user_settings_action_selection
-    choices = ["Change SubscriptionTracker Username", "Change SubscriptionTracker Password", "Back", "Logout"]
+    choices = ["Change SubscriptionTracker Username", "Change SubscriptionTracker Password", "Delete SubscriptionTracker Account & Data","Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", choices)
     case selection
     when "Change SubscriptionTracker Username"
       change_app_username_handler
     when "Change SubscriptionTracker Password"
       change_app_password_handler
+    when "Delete SubscriptionTracker Account & Data"
+      delete_user_account
     when "Back"
       system 'clear'
       main_menu
@@ -59,6 +61,20 @@ module UserSettings
     if !passwords_match?(@new_app_password)
       password_mismatch
       change_app_password_handler
+    end
+  end
+
+  def delete_user_account
+    delete_users_data
+    @user.destroy
+    puts "Kaboom"
+    @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
+  end
+
+  def delete_users_data
+    @user.subscriptions.reload.each do |subscription| 
+      subscription.reminders.reload.each {|reminder| reminder.destroy}
+      subscription.destroy
     end
   end
 
