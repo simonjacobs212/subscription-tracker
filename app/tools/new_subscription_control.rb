@@ -22,7 +22,8 @@ module NewSubscriptionControl
     end
     new_subscription_info_hash[:service_id] = @service.id
     new_subscription_info_hash[:user_id] = @user.id
-    Subscription.create(new_subscription_info_hash)
+    @subscription = Subscription.create(new_subscription_info_hash)
+    set_new_reminder if set_reminder?
     access_subscriptions
   end
 
@@ -31,4 +32,7 @@ module NewSubscriptionControl
     @@prompt.select("Which service did you subscribe to? (Begin typing the name to filter results)\n----------------------------------------------------------------------------\n", choices, filter: true)
   end
 
+  def set_reminder?
+    yes_no("Would you like to set a reminder for this subscription?")
+  end
 end

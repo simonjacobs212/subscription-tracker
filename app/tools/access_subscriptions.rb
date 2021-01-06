@@ -59,6 +59,7 @@ module AccessSubscriptions
     case selection
     when "Change Days Notice"
       set_new_reminder
+      reminder_menu
     when "Disable Reminder"
       disable_reminder
     when "Back"
@@ -87,8 +88,7 @@ module AccessSubscriptions
     days_notice = ask_days_notice
     @subscription.set_reminder(days_notice)
     puts "Your reminder has been set for #{days_notice} days before #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")}."
-    sleep(1.5)
-    reminder_menu
+    @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
   end
 
   def disable_reminder
