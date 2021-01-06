@@ -36,6 +36,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
     * [2.4.3 Service](#243-service)
     * [2.4.4 Reminder](#244-reminder)
     * [2.4.5 Seeds](#245-seeds)
+    * [2.4.6 CLI](#245-cli)
   * [2.5 Stretch Goals](#24-stretch-goals)
     * [2.5.1 README in Markdown](#251-readme-in-markdown)
     * [2.5.2 User Login System](#252-user-login-system)
@@ -200,6 +201,8 @@ Reminders will be able to:
   * Free trials vs. paid subscriptions
   * Active reminders, old reminders, no reminders
 
+#### 2.4.6 CLI
+* :white_check_mark: Develop basic command line interface for user to manage & control app
 
 ### 2.5 Stetch Goals
 #### 2.5.1 README in Markdown 
@@ -226,10 +229,6 @@ Status: :x:
 
 
 
-
-<!-- Develop Schema & Associations & Seed  - done
-Develop CRUD methods - done
-Develop CLI Interface - WIP -->
 
 Begin stretch goals:
 log into the application or make new account
