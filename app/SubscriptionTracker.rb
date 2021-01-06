@@ -1,7 +1,10 @@
+require_relative 'tools/fonts'
+
 class SubscriptionTracker
   include UserSettings
   include AccessSubscriptions
   include SpendingAnalyzer
+  include FontStuff
 
   def run
     welcome
@@ -15,6 +18,7 @@ class SubscriptionTracker
   
   def welcome
     system 'clear'
+    display_logo
     puts "Welcome to SubscriptionTracker!"
     sleep(0.3)
   end
