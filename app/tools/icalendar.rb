@@ -5,9 +5,6 @@
         @cal.add_event(event)
     end
 
-
-
-
     def create_ics_file(filename)
         cal_string = @cal.to_ical
         File.open("reminder_files/#{@user.app_username}/#{filename} ","w") {|f| f.write "#{cal_string}"}
@@ -25,11 +22,5 @@
         create_ics_file(filename)
         open_ics_file(filename)
     end
-
-
-
-# #   cal_string = cal.to_ical
-# #     File.open("testing/test.ics","w") {|f| f.write "#{cal_string}"} # Makes a new file in the testing directory and writes the contents of the block to the file.
-# #     Dir.pwd #prints current pathway that files string would need to be appended to
 
 # end
