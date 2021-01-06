@@ -232,3 +232,8 @@ Status: :x:
 * Colorize
 * Build tests for methods
 
+- Add Subscription info to Calendar Event
+- Make Users Event Directory
+- Make Event Files
+- Delete old .ics Files when new ones created
+- Tell user how to make it work
