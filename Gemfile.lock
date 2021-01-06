@@ -27,6 +27,9 @@ GEM
     faraday-net_http (1.0.0)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
+    icalendar (2.7.0)
+      ice_cube (~> 0.16)
+    ice_cube (0.16.3)
     jwt (2.2.2)
     method_source (1.0.0)
     minitest (5.14.3)
@@ -89,7 +92,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
-  x86_64-darwin-20
 
 DEPENDENCIES
   activerecord (~> 5.2)
@@ -97,6 +99,7 @@ DEPENDENCIES
   colorize
   dotenv
   faker
+  icalendar
   pry
   rake
   require_all
