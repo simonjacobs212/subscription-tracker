@@ -36,7 +36,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
     * [2.4.3 Service](#243-service)
     * [2.4.4 Reminder](#244-reminder)
     * [2.4.5 Seeds](#245-seeds)
-    * [2.4.6 CLI](#245-cli)
+    * [2.4.6 CLI](#246-cli)
   * [2.5 Stretch Goals](#24-stretch-goals)
     * [2.5.1 README in Markdown](#251-readme-in-markdown)
     * [2.5.2 User Login System](#252-user-login-system)
@@ -229,13 +229,12 @@ Status: :x:
 
 
 
+<h1><strong>Not Yet Done</strong></h1>
 
-Begin stretch goals:
-log into the application or make new account
-Delete User’s app account & data
-View spending by category and/or service
-Change username
-Change password
-Use Twilio to send Reminder, If applicable Calendar API
-Build tests for methods
+* Spending Analyzer
+* Delete User’s app account & data
+* Use Twilio to send Reminder, 
+  * If applicable Calendar API
+* Colorize
+* Build tests for methods
 
