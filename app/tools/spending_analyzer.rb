@@ -28,13 +28,9 @@ module SpendingAnalyzer
         puts "With a cost per day of $#{sprintf('%.2f', @user.most_expensive_service.normalize_cost.round(2))}."
     end
 
-    def cost_by_category
-        @user.daily_spending_by_category
-    end
-
-    # def
-    #     subscription.service.categories.each_with_object({}) do |category, new_hash|
-    #         new_hash[category.name].nil? : new_hash[category.name] = 
+    # def cost_by_category
+    #     @user.daily_spending_by_category
     # end
+
 
 end
