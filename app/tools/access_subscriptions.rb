@@ -22,7 +22,7 @@ module AccessSubscriptions
     end
   end
 
-  def pick_subscription
+  def pick_subscription  #picture?
     choices = @user.create_subscription_menu_choices
     choices["Add New Subscription"] = "Add New Subscription"
     choices["Back"] = "Back"

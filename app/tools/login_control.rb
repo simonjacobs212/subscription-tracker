@@ -3,7 +3,7 @@ module LoginControl
   
   def login_or_signup
     choices = ["New user", "Existing User", "Quit"]
-    selection = @@prompt.select("Are you a", choices)
+    selection = @@prompt.select("Are you a: ", choices)
     case selection
     when "New user" 
       handle_new_user

@@ -23,9 +23,10 @@ class SubscriptionTracker
     sleep(0.3)
   end
 
-  def say_hi_to_user
+  def say_hi_to_user   #ASCII picture?
     system 'clear'
-    puts "Welcome #{@user.first_name.capitalize}"
+    puts "Welcome #{@user.first_name.capitalize}!"
+    puts "\n" 
   end
 
   def display_active_reminders_for_user

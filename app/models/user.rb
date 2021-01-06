@@ -60,10 +60,10 @@ class User < ActiveRecord::Base
 
     def print_app_login_info
         puts "Current SubscriptionTracker Credentials:"
-        puts "\n"
-        puts "Username: #{self.app_username}"
-        puts "Password: #{self.app_password}"
-        puts "\n"
+        puts "--------------------------------------------"
+        puts "Username: " +"#{self.app_username}".light_blue
+        puts "Password: " +"#{self.app_password}".light_blue
+        puts "--------------------------------------------"
     end
 
     def display_full_name

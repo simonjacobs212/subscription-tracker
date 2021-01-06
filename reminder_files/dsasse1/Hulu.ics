@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210106T224505Z
+UID:a847d2cf-a9f0-4e6b-be03-627c9249e364
+DTSTART;VALUE=DATE:20210129
+DTEND;VALUE=DATE:20210205
+CLASS:PRIVATE
+DESCRIPTION:Your Hulu subscription for the email address d@d.com is set to 
+ expire on 2021-02-05. Be sure to login to hulu.com to cancel your subscrip
+ tion if you do not wish to renew.
+SUMMARY:💰 Hulu is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

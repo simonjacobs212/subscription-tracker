@@ -37,7 +37,7 @@ module UserSettings
     @new_app_username = @@prompt.ask("Please enter your new SubscriptionTracker username: ", required: true)
     validate_new_username
     @user.update(app_username: @new_app_username)
-    puts "✅ Your SubscriptionTracker username has been updated to #{@user.app_username}."
+    puts "✅ Your SubscriptionTracker username has been updated to #{@user.app_username}.".green
     @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
     user_settings
   end
@@ -54,7 +54,7 @@ module UserSettings
     @repeat_password = @@prompt.mask("Re-enter your SubscriptionTracker password to confirm: ", required: true, mask: @@heart)
     validate_new_password
     @user.update(app_password: @new_app_password)
-    puts "✅ Your SubscriptionTracker password has been updated to #{@user.app_password}."
+    puts "✅ Your SubscriptionTracker password has been updated to #{@user.app_password}.".green
     @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
     user_settings
   end
@@ -69,7 +69,7 @@ module UserSettings
   def delete_user_account
     delete_users_data
     @user.destroy
-    @@prompt.keypress("Your data has been destroyed. Press space or enter to exit.", keys: [:space, :return])
+    @@prompt.keypress("Your data has been destroyed. Press space or enter to exit.".yellow, keys: [:space, :return])
     run
   end
 
@@ -81,7 +81,7 @@ module UserSettings
   end
 
   def confirm_user_delete?
-    puts " ⚠️ Warning: This action cannot be undone. ⚠️ "
+    puts "⚠️  Warning: This action cannot be undone. ⚠️ ".yellow
     yes_no("Are you sure you would like to delete your account and data?")
   end
 
