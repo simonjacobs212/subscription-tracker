@@ -21,7 +21,9 @@ module UserSettings
     when "Change SubscriptionTracker Password"
       change_app_password_handler
     when "Delete SubscriptionTracker Account & Data"
-      delete_user_account
+      system 'clear'
+      delete_user_account if confirm_user_delete?
+      user_settings_action_selection
     when "Back"
       system 'clear'
       main_menu
@@ -67,8 +69,8 @@ module UserSettings
   def delete_user_account
     delete_users_data
     @user.destroy
-    puts "Kaboom"
-    @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
+    @@prompt.keypress("Your data has been destroyed. Press space or enter to exit.", keys: [:space, :return])
+    run
   end
 
   def delete_users_data
@@ -76,6 +78,11 @@ module UserSettings
       subscription.reminders.reload.each {|reminder| reminder.destroy}
       subscription.destroy
     end
+  end
+
+  def confirm_user_delete?
+    puts " ⚠️ Warning: This action cannot be undone. ⚠️ "
+    yes_no("Are you sure you would like to delete your account and data?")
   end
 
 end

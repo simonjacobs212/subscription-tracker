@@ -69,7 +69,4 @@ module SpendingAnalyzer
         puts "\n"
         @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
-    
-    
-
 end
