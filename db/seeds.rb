@@ -25,7 +25,7 @@ puts "creating services"
 netflix = Service.create(name: "Netflix", url: "netflix.com")
 hulu = Service.create(name: "Hulu", url: "hulu.com")
 amazon = Service.create(name: "Amazon", url: "amazon.com")
-disney_plus = Service.create(name: "Disney+", url: "disneyplus.com")
+disney_plus = Service.create(name: "Disney+", url: "https://www.disneyplus.com/login")
 spotify = Service.create(name: "Spotify", url: "spotify.com")
 pandora = Service.create(name: "Pandora", url: "pandora.com")
 ebay = Service.create(name: "Ebay", url: "ebay.com")

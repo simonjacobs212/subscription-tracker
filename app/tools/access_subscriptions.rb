@@ -89,7 +89,6 @@ module AccessSubscriptions
     days_notice = ask_days_notice
     @subscription.set_reminder(days_notice)
     puts "Your reminder has been set for #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")} which will provide #{days_notice} days notice."
-    @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
   end
 
   def disable_reminder
@@ -108,12 +107,13 @@ module AccessSubscriptions
 
   def create_calendar_reminder
     @reminder = @subscription.active_reminder
-    event = @reminder.create_event_obj #NOT FINAL
+    event = @reminder.create_event_obj 
     @user.create_user_directory
     create_calendar_obj(event)
-    filename = @reminder.create_reminder_filename
-    create_ics_file(filename)
-    open_ics_file(filename)
+    @filename = @reminder.create_reminder_filename
+    delete_old_file if file_exists?
+    create_ics_file
+    open_ics_file
   end
 
 end
