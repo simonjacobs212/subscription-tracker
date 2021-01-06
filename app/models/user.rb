@@ -98,4 +98,8 @@ class User < ActiveRecord::Base
         end
     end
 
+    def create_user_directory
+        Dir.mkdir "reminder_files/#{self.app_username}" if !Dir.exists? "reminder_files/#{self.app_username}"
+    end
+
 end
