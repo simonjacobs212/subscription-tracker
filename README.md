@@ -112,7 +112,6 @@ Selecting this menu option will provide an analysis of your current spending bas
 * Monthly spending report assumes that all current subscriptions will be maintained for at least 30 days
 * Yearly spending report assumes that all current subscriptions will be maintained for 365 days
 * Cost by category will present your will a breakdown of how much the user spends <strong>per day</strong> on each of the categories that their services belong to. Use this to look for areas in which you many be overspending.
-* Duplicate Subscriptions report will highlight services for which you have multiple current subscriptions and the amount of money that could be saved by eliminating all but one.
 
 #### 1.3.3 Reminders
 ##### 1.3.3.1 Change Days Notice
@@ -167,13 +166,12 @@ User will be able to:
 * :white_check_mark: View their current subscriptions
 * :white_check_mark: Modify their current subscription (cost/duration)
 * :white_check_mark: Delete their subscription(s)
-* :x: View subscription spending:
+* :white_check_mark: View subscription spending:
   * By day
   * By month
   * By year
   * By category
   * By most expensive service
-  * Wasted money due to duplicate subscriptions
 
 #### 2.4.2 Subscription
 Subscriptions will be able to:
@@ -228,7 +226,6 @@ Status: :x:
 
 <h1><strong>Not Yet Done</strong></h1>
 
-* Spending Analyzer
 * Delete User’s app account & data
 * Use Twilio to send Reminder, 
   * If applicable Calendar API

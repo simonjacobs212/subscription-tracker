@@ -29,23 +29,31 @@ module SpendingAnalyzer
     end
 
     def overall_spending_summary
+        rows = [
+            ["Per Day:","$#{sprintf('%.2f', @user.spending_per_day.round(2))}"],
+            ["Per Month:","$#{sprintf('%.2f', @user.spending_per_month.round(2))}"],
+            ["Per Year:", "$#{sprintf('%.2f', @user.spending_per_year.round(2))}"]
+            ]
         puts "Spending Summary"
-        puts "--------------------------------------------------"
-        puts "Your total daily spending is: $#{sprintf('%.2f', @user.spending_per_day.round(2))}"
-        puts "--------------------------------------------------"
-        puts "Your total monthly spending is: $#{sprintf('%.2f', @user.spending_per_month.round(2))}"
-        puts "--------------------------------------------------"
-        puts "Your total yearly spending is: $#{sprintf('%.2f', @user.spending_per_year.round(2))}"
-        puts "--------------------------------------------------"
+        puts "\n"
+        table = TTY::Table.new(["Total Spending","Price"], rows)
+        puts table.render(:ascii, alignment: [:center])
+        puts "\n"
         @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
 
     def display_most_expensive_subscription
         system 'clear'
-        puts "Your most expensive subscription is #{@user.most_expensive_subscription.service.name}."
-        puts "Cost per day: $#{sprintf('%.2f', @user.most_expensive_subscription.normalize_cost.round(2))}."
-        puts "Cost per month: $#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 30).round(2))}."
-        puts "Cost per year: $#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 365).round(2))}."
+        rows = [
+            ["Day:","$#{sprintf('%.2f', @user.most_expensive_subscription.normalize_cost.round(2))}."],
+            ["Month:","$#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 30).round(2))}."],
+            ["Year:", "$#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 365).round(2))}."]
+            ]
+        puts "Your most expensive subscription is: #{@user.most_expensive_subscription.service.name}."
+        puts "\n"
+        table = TTY::Table.new(["Cost per","Price"], rows)
+        puts table.render(:ascii, alignment: [:center])
+        puts "\n"
         @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
 
@@ -55,10 +63,10 @@ module SpendingAnalyzer
         end
         puts "Please note some of your services may have multiple categories."
         puts "This may potentially result in exact duplicate costs."
-        puts "---------------------------------------------------------------"
+        puts "\n"
         table = TTY::Table.new(["Category","Monthly Cost","Yearly Cost"], rows)
-        binding.pry
-        puts table.render(:basic)
+        puts table.render(:ascii, alignment: [:center])
+        puts "\n"
         @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
     
