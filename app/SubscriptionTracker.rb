@@ -1,5 +1,3 @@
-require_relative 'tools/fonts'
-
 class SubscriptionTracker
   include UserSettings
   include AccessSubscriptions
