@@ -35,4 +35,28 @@ module NewSubscriptionControl
   def set_reminder?
     yes_no("Would you like to set a reminder for this subscription?")
   end
+
+  def set_custom_start_date
+    @date_hash = get_date_info
+    new_date = convert_date_hash_to_date
+    @subscription.set_start_date(new_date)
+  end
+  
+  def convert_date_hash_to_date
+    @date_hash.values.join(" ").to_date
+  end
+
+  def get_date_info
+    months = Date::MONTHNAMES[1..12]
+    days = (1..31).to_a
+    @@prompt.collect do
+      key(:month).select("Please select the month in which the subscription started", months, required: true, filter: true)
+      key(:day).select("Please select the date on which the subscription started: ", days, required: true, filter: true)
+      key(:year).ask("Please enter the year which when the subscription plan began", required: true) do |response|
+        response.validate(/\A[1,2][0,9]\d{2}\Z/)
+        response.messages[:valid?] = "Invalid year. Please enter a year from 1900 - present."
+      end
+    end
+  end
+
 end

@@ -4,7 +4,7 @@ class Subscription < ActiveRecord::Base
   has_many :reminders
 
   after_create :initialize_renewal
-  after_create :set_default_notice
+  after_create :set_default_start_date
 
   def set_default_start_date
       self.update(start_date: self.created_at) if self.start_date.nil?
