@@ -15,8 +15,8 @@ module NewSubscriptionControl
         response.validate(/\b[1-9]\d{0,2}\b/)
         response.messages[:valid?] = "Invalid duration. Please enter a plan duration between 1 and 365."
       end
-      key(:cost_per_duration).ask("What is the cost of your plan for the duration you provided? (If this is a free trial, enter 0.00) ", convert: :float) do |response| 
-        response.validate(/\A\d{1,4}\.\d{2}/)
+      key(:cost_per_duration).ask("What is the cost of your subscription plan? (If this is a free trial, enter 0.00) ", convert: :float) do |response| 
+        response.validate(/((\A\d{1,4}\.\d{2}\Z)|(\A\d{1,4}\Z))/)
         response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
       end
     end

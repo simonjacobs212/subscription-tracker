@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210107T141348Z
+UID:7fccda3f-9614-4d40-8768-2796a72c9e8e
+DTSTART;VALUE=DATE:20210201
+DTEND;VALUE=DATE:20210206
+CLASS:PRIVATE
+DESCRIPTION:Your Netflix subscription for the email address amcivor@gmail.c
+ om is set to expire on 2021-02-06. Be sure to login to netflix.com to canc
+ el your subscription if you do not wish to renew.
+SUMMARY:💰 Netflix is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
