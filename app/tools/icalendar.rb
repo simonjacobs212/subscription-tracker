@@ -1,4 +1,5 @@
 module CalendarHandler
+    include CliControls
 
     def create_calendar_obj(event)
         @cal = Icalendar::Calendar.new
@@ -12,7 +13,7 @@ module CalendarHandler
     def delete_old_file
         File.delete("reminder_files/#{@user.app_username}/#{@filename}")
         puts "A new calendar event is about to be created."
-        puts "Please note that the existing calendar event for #{reminder.subscription.service.name} in your Calendar App still exists."
+        puts "Please note that the existing calendar event for #{@reminder.subscription.service.name} in your Calendar App still exists."
         puts "You must manually delete the old event through the Calendar App."
         @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
     end

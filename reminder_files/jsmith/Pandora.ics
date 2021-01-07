@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210107T172833Z
+UID:0828bcaa-9a44-470e-9f8b-609295a2395b
+DTSTART;VALUE=DATE:20210126
+DTEND;VALUE=DATE:20210131
+CLASS:PRIVATE
+DESCRIPTION:Your Pandora subscription for the email address jsmith@gmail.co
+ m is set to expire on 2021-01-31. Be sure to login to pandora.com to cance
+ l your subscription if you do not wish to renew.
+SUMMARY:💰 Pandora is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

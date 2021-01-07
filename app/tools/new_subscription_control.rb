@@ -23,6 +23,7 @@ module NewSubscriptionControl
     new_subscription_info_hash[:service_id] = @service.id
     new_subscription_info_hash[:user_id] = @user.id
     @subscription = Subscription.create(new_subscription_info_hash)
+    set_custom_start_date if set_custom_start_date?
     create_reminder_and_file if set_reminder?
     access_subscriptions
   end
@@ -36,10 +37,15 @@ module NewSubscriptionControl
     yes_no("Would you like to set a reminder for this subscription?")
   end
 
+  def set_custom_start_date?
+    yes_no("Does this subscription start today? Or would you like to enter a previous start date?")
+  end
+
   def set_custom_start_date
     @date_hash = get_date_info
     new_date = convert_date_hash_to_date
     @subscription.set_start_date(new_date)
+    @subscription.custom_renewal_date
   end
   
   def convert_date_hash_to_date

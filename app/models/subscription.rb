@@ -3,9 +3,9 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   has_many :reminders
 
-  after_create :initialize_renewal
   after_create :set_default_start_date
-
+  after_create :initialize_renewal
+  
   def set_default_start_date
       self.update(start_date: self.created_at) if self.start_date.nil?
   end
@@ -15,16 +15,20 @@ class Subscription < ActiveRecord::Base
   end
 
   def initialize_renewal
-    self.update(renewal_date: (self.created_at.to_datetime + self.duration.days))
+    self.update(renewal_date: (self.start_date + self.duration.days))
   end
 
   def update_renewal_date
     self.update(renewal_date: (DateTime.now + self.duration.days))
   end
 
+  def custom_renewal_date
+    self.update(renewal_date: (self.start_date + self.duration.days))
+  end
+
 
   def days_remaining
-    return (self.renewal_date.to_datetime - DateTime.now).to_i if (self.renewal_date.to_datetime - DateTime.now).to_i > 0
+    return (self.reload.renewal_date.to_datetime - DateTime.now).to_i if (self.renewal_date.to_datetime - DateTime.now).to_i > 0
     "⚠️ This subscription has expired.".yellow
   end
 
