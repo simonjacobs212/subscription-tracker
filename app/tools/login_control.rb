@@ -110,7 +110,7 @@ module LoginControl
   end
 
   def get_budget_amount
-      @@prompt.ask("What is your monthly budget for subscription services?", require: true, convert: :float) do |response| 
+      @@prompt.ask("What is your monthly budget for subscription services? $", require: true, convert: :float) do |response| 
           response.validate(/((\A\d{1,4}\.\d{2}\Z)|(\A\d{1,4}\Z))/)
           response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
       end

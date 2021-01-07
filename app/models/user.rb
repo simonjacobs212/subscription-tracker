@@ -33,9 +33,9 @@ class User < ActiveRecord::Base
 
     def display_upcoming_renewals
         self.upcoming_renewals.each do |subscription|
-            puts "Service Name: #{subscription.service.name}"
-            puts "Will expire on: #{subscription.renewal_date}"
-            puts "-----------------------------------------------------"
+            puts "Service Name: "+"#{subscription.service.name}".light_blue
+            puts "Will expire on: "+"#{subscription.renewal_date.strftime("%b %d %Y")}".light_blue
+            puts "------------------------------"
             puts "\n"
         end
     end
@@ -63,7 +63,9 @@ class User < ActiveRecord::Base
         puts "--------------------------------------------"
         puts "Username: " +"#{self.app_username}".light_blue
         puts "Password: " +"#{self.app_password}".light_blue
-        puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
+        if self.has_budget?
+            puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
+        end
         puts "--------------------------------------------"
     end
 
@@ -121,6 +123,32 @@ class User < ActiveRecord::Base
         puts "------------------------"
         puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
         puts "------------------------"
+    end
+
+    def over_budget?
+        self.spending_per_month.round(2) > self.budget
+    end
+
+    def spending_difference
+        (self.budget - self.spending_per_month.round(2)).abs
+    end
+
+    def over_budget_alert
+        "You are currently exceeding your monthly budget of "+ "$#{sprintf('%.2f', self.budget)}".red + "\n" +
+        "You are overspending by "+ "$#{sprintf('%.2f', self.spending_difference)}".red
+    end
+
+    def under_budget_alert
+        "You are currently under your monthly budget of "+ "$#{sprintf('%.2f', self.budget)}".light_green + "\n" +
+        "You are underspending by "+ "$#{sprintf('%.2f', self.spending_difference)}".light_green
+    end
+
+    def budget_alerts
+        if self.over_budget? 
+            puts self.over_budget_alert
+        else 
+            puts self.under_budget_alert
+        end
     end
 
 end

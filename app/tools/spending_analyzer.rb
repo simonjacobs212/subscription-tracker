@@ -39,6 +39,8 @@ module SpendingAnalyzer
         table = TTY::Table.new(["Total Spending".green, "Price".green], rows)
         puts table.render(:ascii, alignment: [:center])
         puts "\n"
+        @user.budget_alerts if @user.has_budget?
+        puts "\n"
         @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
 
@@ -69,4 +71,6 @@ module SpendingAnalyzer
         puts "\n"
         @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
     end
+
+    
 end

@@ -73,5 +73,5 @@ class Subscription < ActiveRecord::Base
   def normalize_cost
     self.cost_per_duration / self.duration
   end
-
+  
 end

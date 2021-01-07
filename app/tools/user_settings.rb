@@ -13,17 +13,17 @@ module UserSettings
   end
 
   def user_settings_action_selection
-    choices = ["Change SubscriptionTracker Username", "Change SubscriptionTracker Password", "Update Budget", "Delete SubscriptionTracker Account & Data","Back", "Logout"]
+    choices = ["Change Username", "Change Password", "Update Budget", "Delete Account & Data","Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", choices)
     case selection
-    when "Change SubscriptionTracker Username"
+    when "Change Username"
       change_app_username_handler
-    when "Change SubscriptionTracker Password"
+    when "Change Password"
       change_app_password_handler
     when "Update Budget"
       budget_handler
       user_settings_action_selection
-    when "Delete SubscriptionTracker Account & Data"
+    when "Delete Account & Data"
       system 'clear'
       delete_user_account if confirm_user_delete?
       user_settings_action_selection
@@ -98,12 +98,6 @@ module UserSettings
       yes_no("Would you like to update your budget to help analyze your spending?")
   end
 
-  # def budget_handler
-  #     has_budget? ? update_budget : 
-      
-  #     ask_to_update_budget
-  #     ask_to_create_budget
-  # end
 
 
 
