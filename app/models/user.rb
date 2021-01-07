@@ -107,4 +107,45 @@ class User < ActiveRecord::Base
         system 'rm','-rf',"reminder_files/#{self.app_username}" if Dir.exists? "reminder_files/#{self.app_username}"
     end
 
+    def has_budget?
+        !self.budget.nil?
+    end
+
+    def set_budget(value)
+        self.update(budget: value)
+    end
+
+
+    def ask_to_create_budget
+        yes_no("Would you like to set a budget to help analyze your spending?")
+    end
+
+    def get_budget_amount
+        @@prompt.ask("What is your monthly budget for subscription services?", require: true, convert: :float) do |response| 
+            response.validate(/((\A\d{1,4}\.\d{2}\Z)|(\A\d{1,4}\Z))/)
+            response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
+        end
+    end
+
+
+
+
+
+
+
+    def ask_to_update_budget
+        yes_no("Would you like to update your budget to help analyze your spending?")
+    end
+
+
+
+
+    # def manage_budget
+    #     has_budget? ? ask_to_update_budget : ask_to_create_budget
+    # end
+
+
+
+
+
 end

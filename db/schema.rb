@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_182904) do
+ActiveRecord::Schema.define(version: 2021_01_07_182954) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_182904) do
     t.string "app_password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "budget"
   end
 
 end
