@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_182904) do
     t.integer "duration"
     t.float "cost_per_duration"
     t.date "renewal_date"
+    t.date "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

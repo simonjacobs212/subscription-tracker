@@ -4,6 +4,15 @@ class Subscription < ActiveRecord::Base
   has_many :reminders
 
   after_create :initialize_renewal
+  after_create :set_default_notice
+
+  def set_default_start_date
+      self.update(start_date: self.created_at) if self.start_date.nil?
+  end
+
+  def set_start_date(date)
+    self.update(start_date: date)
+  end
 
   def initialize_renewal
     self.update(renewal_date: (self.created_at.to_datetime + self.duration.days))
