@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
         puts "--------------------------------------------"
         puts "Username: " +"#{self.app_username}".light_blue
         puts "Password: " +"#{self.app_password}".light_blue
+        puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
         puts "--------------------------------------------"
     end
 
@@ -115,37 +116,11 @@ class User < ActiveRecord::Base
         self.update(budget: value)
     end
 
-
-    def ask_to_create_budget
-        yes_no("Would you like to set a budget to help analyze your spending?")
+    def display_current_budget
+        system 'clear'
+        puts "------------------------"
+        puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
+        puts "------------------------"
     end
-
-    def get_budget_amount
-        @@prompt.ask("What is your monthly budget for subscription services?", require: true, convert: :float) do |response| 
-            response.validate(/((\A\d{1,4}\.\d{2}\Z)|(\A\d{1,4}\Z))/)
-            response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
-        end
-    end
-
-
-
-
-
-
-
-    def ask_to_update_budget
-        yes_no("Would you like to update your budget to help analyze your spending?")
-    end
-
-
-
-
-    # def manage_budget
-    #     has_budget? ? ask_to_update_budget : ask_to_create_budget
-    # end
-
-
-
-
 
 end

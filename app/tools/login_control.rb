@@ -19,6 +19,8 @@ module LoginControl
   def handle_new_user
     @new_user_info = gather_new_user_data
     @user = User.create(@new_user_info)
+    budget_handler if create_budget?
+    @user
   end
 
   def gather_new_user_data
@@ -101,5 +103,23 @@ module LoginControl
     @user = User.find_by(existing_user_info)
   end
 
+  #### budget new user #####
+
+  def create_budget?
+    yes_no("Would you like to set a budget to help analyze your spending?")
+  end
+
+  def get_budget_amount
+      @@prompt.ask("What is your monthly budget for subscription services?", require: true, convert: :float) do |response| 
+          response.validate(/((\A\d{1,4}\.\d{2}\Z)|(\A\d{1,4}\Z))/)
+          response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
+      end
+  end
+
+  def budget_handler
+    @user.display_current_budget if @user.has_budget?
+    budget = get_budget_amount
+    @user.set_budget(budget)
+  end
 
 end
