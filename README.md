@@ -1,6 +1,8 @@
 <h1 style="color:green; text-align: center">Subscription Tracker</h1>
-<p></p>
-<img src="due_date_on_calendar.jpeg" style="display:block;margin-left:auto;margin-right:auto">
+
+---
+
+<img src="app/lib/images/due_date_on_calendar.jpeg" style="display:block;margin-left:auto;margin-right:auto">
 
 ## Welcome to Subscription Tracker! 
 This app is designed to keep tracker of your free and paid subscriptions such as Netflix, Amazon, Spotify, and more. As the renewal dat for your subscription comes close, or your free trial is about to end, this app will alert you. By default, notifications will be issues 7 days in advance of the renewal date. This will give you one week to either cancel your subscription, end your free trial, or be prepared to pay for the renewal.
@@ -167,7 +169,8 @@ Selecting this option will allow you to <strong>permanently</strong> delete your
 
 ## 2. App Design
 ### 2.1 Domain Model (ERD)
-![](Subscriptiontracker_ERD.png)
+<img src="app/lib/images/SubscriptionTracker_ERD.png" style="display:block;margin-left:auto;margin-right:auto">
+
 [[Top]](#table-of-contents)
 ### 2.2 Model Associations
 * A Category 
@@ -197,8 +200,8 @@ Selecting this option will allow you to <strong>permanently</strong> delete your
 
 ### 2.3 Interface Modules
 The main features and menus of the SubscriptionTracker Interface are modularized to facilitate navigation, maintenance, and expansion. In order for the module associations to function, the modules are required using the heirarchy shown below:
+<img src="app/lib/images/App Module Diagram.png" style="display:block;margin-left:auto;margin-right:auto">
 
-<img src="App Module Diagram.png" style="display:block;margin-left:auto;margin-right:auto">
 
 [[Top]](#table-of-contents)
 

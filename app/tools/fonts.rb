@@ -6,8 +6,17 @@ module FontStuff
     sleep(0.5)
     scroll_out("yellow")
     sleep(0.2)
+    play_multi_coin
     same_color("light_green")
     sleep(2.0)
+  end
+
+  def play_single_coin
+    system 'afplay', 'app/lib/music/super-mario-world-coin.mp3'
+  end
+
+  def play_multi_coin
+    system 'afplay', 'app/lib/music/super-mario-world-multiple-coins.mp3'
   end
 
   def scroll_in(color)
@@ -20,7 +29,7 @@ module FontStuff
           puts line.send("#{color}")
         end
       end
-      sleep (0.05)
+      sleep (0.02)
     end
   end
 
@@ -34,7 +43,7 @@ module FontStuff
             puts line.send(:hide)
           end
         end
-        sleep (0.05)
+        sleep (0.02)
       end
     end
 
@@ -106,10 +115,18 @@ module FontStuff
   end
 
 
-
-
-
-
 end
 
+class String
+  
+  def center_align
+    string_length = self.length
+    string_center = string_length/2
+    screen_width = TTY::Screen.width
+    screen_center = screen_width / 2
+    offset = screen_center - string_center
+    "#{sprintf("%#{offset}s" % "hello")}"
+  end
+
+end
 

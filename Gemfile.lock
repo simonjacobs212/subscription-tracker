@@ -91,7 +91,6 @@ GEM
     wisper (2.0.1)
 
 PLATFORMS
-  x86_64-darwin-19
   x86_64-darwin-20
 
 DEPENDENCIES
@@ -107,6 +106,7 @@ DEPENDENCIES
   sinatra-activerecord
   sqlite3
   tty-prompt
+  tty-screen (~> 0.8.1)
   tty-table
   twilio-ruby
 
