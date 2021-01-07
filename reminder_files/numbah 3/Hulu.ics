@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210107T000624Z
+UID:9c960484-74c6-4002-876e-6a68de756ed3
+DTSTART;VALUE=DATE:20210107
+DTEND;VALUE=DATE:20210416
+CLASS:PRIVATE
+DESCRIPTION:Your Hulu subscription for the email address Tacos@tacos.tacos 
+ is set to expire on 2021-04-16. Be sure to login to hulu.com to cancel you
+ r subscription if you do not wish to renew.
+SUMMARY:💰 Hulu is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

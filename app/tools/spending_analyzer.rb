@@ -45,9 +45,9 @@ module SpendingAnalyzer
     def display_most_expensive_subscription
         system 'clear'
         rows = [
-            ["Day:","$#{sprintf('%.2f', @user.most_expensive_subscription.normalize_cost.round(2))}.".light_green],
-            ["Month:","$#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 30).round(2))}.".light_green],
-            ["Year:", "$#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 365).round(2))}.".light_green]
+            ["Day:","$#{sprintf('%.2f', @user.most_expensive_subscription.normalize_cost.round(2))}".light_green],
+            ["Month:","$#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 30).round(2))}".light_green],
+            ["Year:", "$#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 365).round(2))}".light_green]
             ]
         puts "Your most expensive subscription is: #{@user.most_expensive_subscription.service.name}."
         puts "\n"

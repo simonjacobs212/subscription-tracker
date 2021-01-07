@@ -132,7 +132,8 @@ This will allow you to change the password which you use to log in to the Subscr
 
 ## 2. App Design
 ### 2.1 Domain Model (ERD)
-![](Subscriptiontracker_ERD.png)
+<img src="Subscriptiontracker_ERD.png" style="display:block;margin-left:auto;margin-right:auto">
+
 ### 2.2 Model Associations
 * A Category 
   * has many ServiceCategories
@@ -158,6 +159,8 @@ This will allow you to change the password which you use to log in to the Subscr
   * has many Service through Subscriptions
 
 ### 2.3 Interface Modules
+The main features of the app are divided into modules to facilitate navigation and 
+<img src="App Module Diagram.png" style="display:block;margin-left:auto;margin-right:auto">
 
 ### 2.4 MVP
 #### 2.4.1 User
