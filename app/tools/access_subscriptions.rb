@@ -86,7 +86,7 @@ module AccessSubscriptions
   end
 
   def no_current_reminder
-    puts "⚠️ No reminder is currently set for this subscription."
+    puts "⚠️ No reminder is currently set for this subscription.".yellow
     yes_no("Would you like to set one now?") ? create_reminder_and_file : subscription_action
   end
 
