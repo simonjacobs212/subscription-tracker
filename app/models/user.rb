@@ -103,4 +103,8 @@ class User < ActiveRecord::Base
         Dir.mkdir "reminder_files/#{self.app_username}" if !Dir.exists? "reminder_files/#{self.app_username}"
     end
 
+    def delete_user_files
+        system 'rm','-rf',"reminder_files/#{self.app_username}" if Dir.exists? "reminder_files/#{self.app_username}"
+    end
+
 end

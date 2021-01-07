@@ -68,6 +68,7 @@ module UserSettings
 
   def delete_user_account
     delete_users_data
+    @user.delete_user_files
     @user.destroy
     @@prompt.keypress("Your data has been destroyed. Press space or enter to exit.".yellow, keys: [:space, :return])
     run
