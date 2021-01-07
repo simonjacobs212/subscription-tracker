@@ -40,7 +40,7 @@ module UpdateSubscriptionHandler
     end
       @subscription.update(new_sub_info)
       @subscription.update_renewal_date
-      puts "✅ Your subscription information has been updated"
+      puts "✅ Your subscription information has been updated".green
       sleep (1.5)
   end
 
