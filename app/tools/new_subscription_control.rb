@@ -1,5 +1,3 @@
-require_all 'app/tools'
-
 module NewSubscriptionControl
   include CliControls
 

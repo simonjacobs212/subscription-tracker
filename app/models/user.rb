@@ -62,11 +62,15 @@ class User < ActiveRecord::Base
         puts "Current SubscriptionTracker Credentials:"
         puts "--------------------------------------------"
         puts "Username: " +"#{self.app_username}".light_blue
-        puts "Password: " +"#{self.app_password}".light_blue
+        puts "Password: " +"#{self.mask(self.app_password)}".light_blue
         if self.has_budget?
             puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
         end
         puts "--------------------------------------------"
+    end
+
+    def mask(string, all_but = 0, char = '*')
+        string.gsub(/.(?=.{#{all_but}})/, char)
     end
 
     def display_full_name

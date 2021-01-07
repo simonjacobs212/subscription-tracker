@@ -9,6 +9,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
 ## Table of Contents
 - [Welcome to Subscription Tracker!](#welcome-to-subscription-tracker)
 - [Table of Contents](#table-of-contents)
+- [- 3.1 Known issues](#--31-known-issues)
 - [1. Using the App](#1-using-the-app)
   - [1.1 Launching the App](#11-launching-the-app)
   - [1.2 Logging In](#12-logging-in)
@@ -45,12 +46,17 @@ This app is designed to keep tracker of your free and paid subscriptions such as
     - [2.5.2 User Login System](#252-user-login-system)
     - [2.5.3 Modularize Main App](#253-modularize-main-app)
     - [2.5.4 Reminders link to User's Calendar App](#254-reminders-link-to-users-calendar-app)
+    - [2.5.5 Bring the Terminal to Life](#255-bring-the-terminal-to-life)
+- [3. Contributing](#3-contributing)
+  - [3.1 Known issues](#31-known-issues)
 ---
 ## 1. Using the App
 ### 1.1 Launching the App
-To launch the app, navigate to the parent directory.
-
-Use the rake command `rake start` in the terminal to launch the app.
+* Step 1: To launch the app, navigate to the parent directory.
+* Step 2: Run `bundle install` from your terminal in order to install the required gems.
+* Step 3: Run `rake db:migrate` from your terminal to build the database needed to save your data.
+* Step 4: Run `rake db:seed` from your terminal to add the services to the database so that you may make new subscriptions.
+* Step 5: Use the rake command `rake start` in the terminal to launch the app.
 
 ### 1.2 Logging In
 #### 1.2.1 New Users
@@ -167,7 +173,8 @@ Selecting this option will allow you to <strong>permanently</strong> delete your
 
 ## 2. App Design
 ### 2.1 Domain Model (ERD)
-![](Subscriptiontracker_ERD.png)
+<img src="SubscriptionTracker_ERD.png" style="display:block;margin-left:auto;margin-right:auto">
+
 [[Top]](#table-of-contents)
 ### 2.2 Model Associations
 * A Category 
@@ -300,12 +307,14 @@ Status: :white_check_mark:
 * :white_check_mark: Use ASCII art to create welcome logo and menu graphics
 * Animate the welcome menu 
 
+## 3. Contributing
+Pull requests are welcome. Please make sure that your PR is <a href="https://www.netlify.com/blog/2020/03/31/how-to-scope-down-prs/">well-scoped</a>. For major changes, please open an issue first to discuss what you would like to change.
 
+### 3.1 Known issues
+* <a href="https://github.com/simonjacobs212/subscription-tracker/issues">Visit Issues Section</a>
 
-<h1>To Do?</h1>
+[[Top]](#table-of-contents)
 
-* Specify Subscription Start Date
-* Animate Logo
-* Mario Coin sound effect
+To do:
 * update service urls
 * build more services

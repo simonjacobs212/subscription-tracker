@@ -1,4 +1,4 @@
-require_all 'app/tools'
+# require_all 'app/tools'
 
 module AccessSubscriptions
   include NewSubscriptionControl
@@ -27,7 +27,20 @@ module AccessSubscriptions
     choices["Add New Subscription"] = "Add New Subscription"
     choices["Back"] = "Back"
     choices["Logout"] = "Logout"
-    @@prompt.select("Which subscription would like to access?\n--------------------------------------\n", choices)
+    question = subscription_menu_prompts
+    @@prompt.select(question, choices)
+  end
+
+  def user_has_subscriptions?
+    !@user.subscriptions.empty?
+  end
+
+  def subscription_menu_prompts
+    if user_has_subscriptions?
+      "Which subscription would like to access?\n--------------------------------------\n"
+    else
+      "Add a new subscription to get started:\n--------------------------------------\n"
+    end
   end
 
   def subscription_action
