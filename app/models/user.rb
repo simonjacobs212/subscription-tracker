@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     end
 
     def display_full_name
-        "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+        "#{self.first_name.capitalize} #{self.last_name.capitalize}".light_blue
     end
 
     def change_app_password(new_password)

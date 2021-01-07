@@ -16,7 +16,7 @@ class Reminder < ActiveRecord::Base
         info = {
             dt: "#{self.reload.reminder_date}", 
             summary: "\u{1F4B0} #{self.subscription.service.name} is expiring!" , 
-            desc: "Your #{self.subscription.service.name} subscription for the email address #{self.subscription.email} is set to expire on #{self.subscription.renewal_date}. Be sure to login to #{self.subscription.service.url} to cancel your subscription if you do not wish to renew."
+            desc: "Your #{self.subscription.service.name} subscription for the email address #{self.subscription.email} is set to expire on #{self.subscription.renewal_date.strftime("%b %d %Y")}. Be sure to login to #{self.subscription.service.url} to cancel your subscription if you do not wish to renew."
             }
         event = Icalendar::Event.new
             event.dtstart = Icalendar::Values::Date.new(Date.parse(info[:dt]))

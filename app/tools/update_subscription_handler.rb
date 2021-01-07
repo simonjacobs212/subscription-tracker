@@ -53,11 +53,11 @@ module UpdateSubscriptionHandler
     end
 
     def want_new_reminder?
-      yes_no("Would you like to set a reminder for this updated subscription?\n⚠️ If you previously had a reminder, it has been disabled ⚠️")
+      yes_no("Would you like to set a reminder for this updated subscription?\n⚠️ If you previously had a reminder, it has been disabled ⚠️".yellow)
     end
 
     def confirm_delete?
-      yes_no("⚠️ Are you sure you want to delete this subscription? This action cannot be undone. ⚠️")
+      yes_no("⚠️ Are you sure you want to delete this subscription? This action cannot be undone. ⚠️".yellow)
     end
 
 end

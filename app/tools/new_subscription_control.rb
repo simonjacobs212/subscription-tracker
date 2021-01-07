@@ -34,11 +34,13 @@ module NewSubscriptionControl
   end
 
   def set_reminder?
+    puts "\n"
     yes_no("Would you like to set a reminder for this subscription?")
   end
 
   def set_custom_start_date?
-    yes_no("Does this subscription start today? Or would you like to enter a previous start date?")
+    puts "\n"
+    !yes_no("Does this subscription start today?")
   end
 
   def set_custom_start_date
@@ -47,7 +49,7 @@ module NewSubscriptionControl
     @subscription.set_start_date(new_date)
     @subscription.custom_renewal_date
   end
-  
+
   def convert_date_hash_to_date
     @date_hash.values.join(" ").to_date
   end

@@ -19,13 +19,13 @@ class SubscriptionTracker
   def welcome
     system 'clear'
     display_logo
-    puts "Welcome to SubscriptionTracker!"
+    puts "Welcome to SubscriptionTracker!".blue
     sleep(0.3)
   end
 
   def say_hi_to_user   #ASCII picture?
     system 'clear'
-    puts "Welcome #{@user.first_name.capitalize}!"
+    puts "Welcome #{@user.first_name.capitalize}!".light_blue
     puts "\n" 
   end
 

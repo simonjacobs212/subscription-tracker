@@ -88,12 +88,13 @@ module AccessSubscriptions
   def set_new_reminder
     days_notice = ask_days_notice
     @subscription.set_reminder(days_notice)
-    puts "Your reminder has been set for #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")} which will provide #{days_notice} days notice."
+    puts "Your reminder has been set for "+"#{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")}.".light_blue
+    puts "This will provide " + "#{days_notice}".light_blue + " days notice before your subscription ends."
   end
 
   def disable_reminder
-    puts "⚠️ You will no longer be notified of the renewal date for this subscription."
-    yes_no("Do you wish to continue?") ? @subscription.disable_reminder_for_subscription : reminder_menu
+    puts "⚠️ You will no longer be notified of the renewal date for this subscription.".yellow
+    yes_no("Do you wish to continue?".yellow) ? @subscription.disable_reminder_for_subscription : reminder_menu
   end
 
   def create_reminder_and_file
