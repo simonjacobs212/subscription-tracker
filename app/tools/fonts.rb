@@ -125,7 +125,7 @@ class String
     screen_width = TTY::Screen.width
     screen_center = screen_width / 2
     offset = screen_center - string_center
-    "#{sprintf("%#{offset}s" % "hello")}"
+    "#{sprintf("%#{offset}s" % self)}"
   end
 
 end
