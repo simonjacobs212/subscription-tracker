@@ -15,20 +15,24 @@ class Subscription < ActiveRecord::Base
   end
 
   def initialize_renewal
-    self.update(renewal_date: (self.start_date + self.duration.days))
+    new_date = (self.start_date + self.duration.days)
+    self.update(renewal_date: new_date)
   end
 
   def update_renewal_date
-    self.update(renewal_date: (DateTime.now + self.duration.days))
+    new_date = (DateTime.now + self.duration.days)
+    self.update(renewal_date: new_date)
   end
 
   def custom_renewal_date
-    self.update(renewal_date: (self.start_date + self.duration.days))
+    new_date = (self.start_date + self.duration.days)
+    self.update(renewal_date: new_date)
   end
 
 
   def days_remaining
-    return (self.reload.renewal_date.to_datetime - DateTime.now).to_i if (self.renewal_date.to_datetime - DateTime.now).to_i > 0
+    days_left = (self.reload.renewal_date.to_datetime - DateTime.now)
+    return days_left.to_i if days_left.to_i > 0
     "⚠️ This subscription has expired.".yellow
   end
 

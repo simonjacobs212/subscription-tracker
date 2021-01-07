@@ -6,6 +6,8 @@ class SubscriptionTracker
   include SpendingAnalyzer
   include FontStuff
 
+  attr_accessor :new_user_info
+  
   def run
     welcome
     @user = login_or_signup

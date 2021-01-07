@@ -1,4 +1,4 @@
-# require_all 'app/tools'
+require_all 'app/tools'
 
 module AccessSubscriptions
   include NewSubscriptionControl

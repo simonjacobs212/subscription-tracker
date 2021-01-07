@@ -63,10 +63,9 @@ module UserSettings
   end
 
   def validate_new_password
-    if !passwords_match?(@new_app_password)
-      password_mismatch
-      change_app_password_handler
-    end
+    return unless !passwords_match?(@new_app_password)
+    password_mismatch
+    change_app_password_handler
   end
 
   def delete_user_account
@@ -88,17 +87,5 @@ module UserSettings
     puts "⚠️  Warning: This action cannot be undone. ⚠️ ".yellow
     yes_no("Are you sure you would like to delete your account and data?")
   end
-
-  ####### budget ########
-
-
-
-
-  def ask_to_update_budget
-      yes_no("Would you like to update your budget to help analyze your spending?")
-  end
-
-
-
 
 end

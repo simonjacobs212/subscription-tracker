@@ -27,29 +27,20 @@ module LoginControl
       system 'clear'
       @new_user_info = new_user_input
       @repeat_password = @@prompt.mask("Re-enter your SubscriptionTracker to confirm: ", required: true, mask: @@heart)
-      gather_new_user_data if !(validate_new_user_credentials == @new_user_info)
+      gather_new_user_data if !(validate_new_user_credentials == self.new_user_info)
       @new_user_info
   end
 
   def validate_new_user_credentials
-    if app_username_available?(@new_user_info[:app_username])
-      return @new_user_info
-    else 
-      name_taken
-      return false
-    end
-    if passwords_match?(@new_user_info[:app_password])
-      return @new_user_info
-    else 
-      password_mismatch
-      return false
-    end
+      app_username_available?(@new_user_info[:app_username]) ? self.new_user_info : name_taken
+      passwords_match?(@new_user_info[:app_password]) ? self.new_user_info : password_mismatch
   end
 
   def name_taken
     puts "⚠️  ⚠️  This username has already been taken. Please choose a new SubscriptionTracker username ⚠️  ⚠️"
     @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
     system 'clear'
+    return false
   end
 
   def app_username_available?(username)
@@ -60,6 +51,7 @@ module LoginControl
     puts "⚠️  ⚠️  Passwords do not match. Please re-enter your information ⚠️  ⚠️"
     @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
     system 'clear'
+    return false
   end
 
   def new_user_input
