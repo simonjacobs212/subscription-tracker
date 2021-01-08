@@ -1,10 +1,10 @@
-require_relative 'tools/fonts'
+require_relative 'tools/funstuff'
 
 class SubscriptionTracker
   include UserSettings
   include AccessSubscriptions
   include SpendingAnalyzer
-  include FontStuff
+  include FunStuff
 
   def run
     welcome
@@ -23,7 +23,7 @@ class SubscriptionTracker
     sleep(0.3)
   end
 
-  def say_hi_to_user   #ASCII picture?
+  def say_hi_to_user   
     system 'clear'
     puts "Welcome #{@user.first_name.capitalize}!"
     puts "\n" 

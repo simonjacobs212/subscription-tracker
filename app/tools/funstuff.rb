@@ -1,4 +1,4 @@
-module FontStuff
+module FunStuff
 
   def display_logo
     @logo = frame
@@ -114,6 +114,11 @@ module FontStuff
               +osyyhhhhhhhhhyyso+        "
   end
 
+  def custom_clear
+    system 'clear'
+    @logo = frame
+    same_color("light_green")
+  end
 
 end
 
@@ -127,6 +132,5 @@ class String
     offset = screen_center - string_center
     "#{sprintf("%#{offset}s" % self)}"
   end
-
 end
 
