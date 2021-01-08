@@ -41,7 +41,7 @@ module SpendingAnalyzer
         puts "\n"
         @user.budget_alerts if @user.has_budget?
         puts "\n"
-        @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
+        @@prompt.keypress("Press space or enter to return to Spending Summary", keys: [:space, :return])
     end
 
     def display_most_expensive_subscription
@@ -56,7 +56,7 @@ module SpendingAnalyzer
         table = TTY::Table.new(["Cost per".green,"Price".green], rows)
         puts table.render(:ascii, alignment: [:center])
         puts "\n"
-        @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
+        @@prompt.keypress("Press space or enter to return to Spending Summary", keys: [:space, :return])
     end
 
     def display_spending_by_category
@@ -69,7 +69,7 @@ module SpendingAnalyzer
         table = TTY::Table.new(["Category".green,"Monthly Cost".green,"Yearly Cost".green], rows)
         puts table.render(:ascii, alignment: [:center])
         puts "\n"
-        @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
+        @@prompt.keypress("Press space or enter to return to Spending Summary", keys: [:space, :return])
     end
 
     

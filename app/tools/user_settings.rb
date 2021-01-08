@@ -22,6 +22,7 @@ module UserSettings
       change_app_password_handler
     when "Update Budget"
       budget_handler
+      @user.print_app_login_info
       user_settings_action_selection
     when "Delete Account & Data"
       system 'clear'

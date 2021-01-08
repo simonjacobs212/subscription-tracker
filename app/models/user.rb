@@ -61,10 +61,10 @@ class User < ActiveRecord::Base
     def print_app_login_info
         puts "Current SubscriptionTracker Credentials:"
         puts "--------------------------------------------"
-        puts "Username: " +"#{self.app_username}".light_blue
-        puts "Password: " +"#{self.mask(self.app_password)}".light_blue
+        puts "Username: " +"#{self.reload.app_username}".light_blue
+        puts "Password: " +"#{self.reload.mask(self.app_password)}".light_blue
         if self.has_budget?
-            puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
+            puts "Current Budget: " +"$#{sprintf('%.2f', self.reload.budget)}".light_blue
         end
         puts "--------------------------------------------"
     end
@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
     def display_current_budget
         system 'clear'
         puts "------------------------"
-        puts "Current Budget: " +"$#{sprintf('%.2f', self.budget)}".light_blue
+        puts "Current Budget: " +"$#{sprintf('%.2f', self.reload.budget)}".light_blue
         puts "------------------------"
     end
 
