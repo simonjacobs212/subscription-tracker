@@ -1,11 +1,14 @@
+
 class Subscription < ActiveRecord::Base
   belongs_to :service
   belongs_to :user
   has_many :reminders
-
+  include CalendarHandler
   after_create :set_default_start_date
   after_create :initialize_renewal
   
+
+
   def set_default_start_date
       self.update(start_date: self.created_at) if self.start_date.nil?
   end
@@ -33,9 +36,35 @@ class Subscription < ActiveRecord::Base
   def days_remaining
     days_left = (self.reload.renewal_date.to_datetime - DateTime.now)
     return days_left.to_i if days_left.to_i > 0
-    "⚠️ This subscription has expired.".yellow
-    play_warning_sound
+    "⚠️ Expired.".yellow
   end
+
+  ############################### Renew Sub ##############################
+  def renew_subscription
+    new_renewal_date = self.renewal_date + self.duration
+    new_start_date = self.renewal_date
+    self.update(start_date: new_start_date, renewal_date: new_renewal_date)
+  end
+
+  def set_new_auto_reminder
+    self.set_reminder(self.days_notice)
+    puts "✅ Your reminder has been set for #{self.active_reminder.reminder_date.strftime("%b %d %Y")}".green
+    puts "This will provide " + "#{self.days_notice}".light_blue + " days notice before your subscription ends."
+  end
+
+  def set_new_auto_cal
+      reminder = self.active_reminder
+      event = reminder.create_event_obj 
+      self.user.create_user_directory
+      cal = Icalendar::Calendar.new
+      cal.add_event(event)
+      filename = reminder.create_reminder_filename
+      delete_old_file if file_exists?
+      create_ics_file
+      open_ics_file
+  end
+
+
 
   def change_subscription(hash)
     self.update(hash)

@@ -97,10 +97,10 @@ module AccessSubscriptions
     days_notice.to_i
   end
 
-  def set_new_reminder
+  def set_new_reminder(subscription)
     days_notice = ask_days_notice
-    @subscription.set_reminder(days_notice)
-    puts "✅ Your reminder has been set for #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")}".green
+    subscription.set_reminder(days_notice)
+    puts "✅ Your reminder has been set for #{subscription.active_reminder.reminder_date.strftime("%b %d %Y")}".green
     puts "This will provide " + "#{days_notice}".light_blue + " days notice before your subscription ends."
     play_single_coin
   end
@@ -111,17 +111,17 @@ module AccessSubscriptions
     yes_no("Do you wish to continue?".yellow) ? @subscription.disable_reminder_for_subscription : reminder_menu
   end
 
-  def create_reminder_and_file
-    set_new_reminder
-    create_calendar_reminder if make_calendar_event?
+  def create_reminder_and_file(subscription)
+    set_new_reminder(subscription)
+    create_calendar_reminder(subscription) if make_calendar_event?
   end
 
   def make_calendar_event?
     yes_no("Would you like to add an event to your calendar for this reminder?")
   end
 
-  def create_calendar_reminder
-    @reminder = @subscription.active_reminder
+  def create_calendar_reminder(subscription)
+    @reminder = subscription.active_reminder
     event = @reminder.create_event_obj 
     @user.create_user_directory
     create_calendar_obj(event)

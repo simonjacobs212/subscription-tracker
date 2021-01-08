@@ -155,4 +155,29 @@ class User < ActiveRecord::Base
         end
     end
 
+################################# Renew Sub
+
+    def auto_renew_subs
+        self.subscriptions.each do |subscription|
+            next if (DateTime.now < subscription.renewal_date) || (subscription.auto_renew == false)
+            puts "✅"
+            subscription.renew_subscription
+            self.renew_message(subscription)
+            subscription.disable_reminder_for_subscription if subscription.reminder_exists?
+            subscription.set_new_auto_cal
+        end
+    end
+
+    def has_auto_renew_subs?
+        return unless !self.subscriptions.empty?
+        self.subscriptions.any? {|subscription| subscription.auto_renew == true}
+    end
+
+    def renew_message(subscription)
+        puts "✅  #{subscription.service.name}'s expiration date has been updated by auto-renew.".light_green
+        puts "If you do not wish to auto-renew this subscription, please disable" + " auto-renew ".blue + "in the subscription's settings."
+        puts "If you did not renew this subscription, and this subscription was updated in error, please delete this subscription."
+    end
+
+
 end

@@ -13,7 +13,7 @@ module UpdateSubscriptionHandler
     when "Update cost/duration"
       update_subcription_info
       disable_old_reminder if @subscription.reminder_exists?
-      set_new_reminder if want_new_reminder? 
+      create_reminder_and_file(@subscription) if want_new_reminder? 
       access_subscriptions
     when "Delete Subscription"
       delete_subscription_and_sound if confirm_delete?

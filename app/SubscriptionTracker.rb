@@ -7,9 +7,11 @@ class SubscriptionTracker
   attr_accessor :new_user_info
   
   def run
+  
     welcome
     @user = login_or_signup
     say_hi_to_user
+    @user.auto_renew_subs if @user.has_auto_renew_subs?
     display_active_reminders_for_user if !@user.upcoming_renewals.empty?
     main_menu    
   end

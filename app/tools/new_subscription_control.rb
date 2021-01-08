@@ -17,12 +17,13 @@ module NewSubscriptionControl
         response.validate(/((\A\d{1,4}\.\d{2}\Z)|(\A\d{1,4}\Z))/)
         response.messages[:valid?] = "Invalid cost. Please enter a cost between 0.00 and 9999.99."
       end
+      key(:auto_renew).yes?("Would you like to turn on auto-renew for this subscription?")
     end
     new_subscription_info_hash[:service_id] = @service.id
     new_subscription_info_hash[:user_id] = @user.id
     @subscription = Subscription.create(new_subscription_info_hash)
     set_custom_start_date if set_custom_start_date?
-    create_reminder_and_file if set_reminder?
+    create_reminder_and_file(@subscription) if set_reminder?
     access_subscriptions
   end
 
