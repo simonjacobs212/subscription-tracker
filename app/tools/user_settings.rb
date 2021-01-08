@@ -59,7 +59,7 @@ module UserSettings
     @repeat_password = @@prompt.mask("Re-enter your SubscriptionTracker password to confirm: ", required: true, mask: @@heart)
     validate_new_password
     @user.update(app_password: @new_app_password)
-    puts "✅ Your SubscriptionTracker password has been updated to #{@user.app_password}.".green
+    puts "✅ Your password has been updated.".green
     play_single_coin
     @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
     user_settings
@@ -77,6 +77,7 @@ module UserSettings
     @user.destroy
     play_explosion
     @@prompt.keypress("Your data has been destroyed. Press space or enter to exit.".yellow, keys: [:space, :return])
+    play_mario_goodbye
     run
   end
 

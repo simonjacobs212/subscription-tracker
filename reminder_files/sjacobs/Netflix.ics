@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210108T033610Z
+UID:4c934627-8480-468d-9bb8-82ce7dd9e0e8
+DTSTART;VALUE=DATE:20210202
+DTEND;VALUE=DATE:20210208
+CLASS:PRIVATE
+DESCRIPTION:Your Netflix subscription for the email address sjacobs@gmail.c
+ om is set to expire on Feb 07 2021. Be sure to login to netflix.com to can
+ cel your subscription if you do not wish to renew.
+SUMMARY:💰 Netflix is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

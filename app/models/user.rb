@@ -123,7 +123,7 @@ class User < ActiveRecord::Base
     end
 
     def display_current_budget
-        system 'clear'
+        custom_clear
         puts "------------------------"
         puts "Current Budget: " +"$#{sprintf('%.2f', self.reload.budget)}".light_blue
         puts "------------------------"

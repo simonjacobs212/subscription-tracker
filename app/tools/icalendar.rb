@@ -12,9 +12,10 @@ module CalendarHandler
 
     def delete_old_file
         File.delete("reminder_files/#{@user.app_username}/#{@filename}")
-        puts "A new calendar event is about to be created."
-        puts "Please note that the existing calendar event for #{@reminder.subscription.service.name} in your Calendar App still exists."
-        puts "You must manually delete the old event through the Calendar App."
+        puts "⚠️ A new calendar event is about to be created. ⚠️".yellow
+        puts "Please note that the existing calendar event for #{@reminder.subscription.service.name} in your Calendar App still exists.".yellow
+        puts "You must manually delete the old event through the Calendar App.".yellow
+        play_warning_sound
         @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
     end
 

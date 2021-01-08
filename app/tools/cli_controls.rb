@@ -1,4 +1,3 @@
-
 module CliControls
     include FunStuff
 

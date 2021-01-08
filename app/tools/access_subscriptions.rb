@@ -76,7 +76,7 @@ module AccessSubscriptions
       disable_reminder
     when "Back"
       custom_clear
-      main_menu
+      subscription_action
     when "Logout"
       custom_clear
       run

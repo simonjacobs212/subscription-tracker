@@ -44,7 +44,6 @@ class Subscription < ActiveRecord::Base
   def delete_subscription
     self.destroy
     puts "💥 Your subscription has been deleted.".yellow
-    play_explosion
     sleep (1.5)
   end
 

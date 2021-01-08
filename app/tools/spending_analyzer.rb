@@ -9,15 +9,15 @@ module SpendingAnalyzer
         case selection
         when "View Overall Spending"
             custom_clear 
-            overall_spending_summary
+            @user.subscriptions.empty? ? no_subscription_alert : overall_spending_summary 
             spending_summary
         when "View Spending by Category"
             custom_clear
-            display_spending_by_category
+            @user.subscriptions.empty? ? no_subscription_alert : display_spending_by_category 
             spending_summary
         when "View Most Expensive Subscription"
             custom_clear
-            display_most_expensive_subscription
+            @user.subscriptions.empty? ? no_subscription_alert : display_most_expensive_subscription
             spending_summary
         when "Back"
             custom_clear
@@ -26,6 +26,12 @@ module SpendingAnalyzer
             custom_clear
             run
         end
+    end
+
+    def no_subscription_alert
+        puts "⚠️ You do not have any subscriptions.".yellow
+        play_warning_sound
+        @@prompt.keypress("Press space or enter to return to Spending Summary", keys: [:space, :return])
     end
 
     def overall_spending_summary
@@ -41,7 +47,7 @@ module SpendingAnalyzer
         puts "\n"
         @user.budget_alerts if @user.has_budget?
         puts "\n"
-        @@prompt.keypress("Press space or enter to return to Spending Summary", keys: [:space, :return])
+        @@prompt.keypress("Press space or enter to return to the Spending Summary menu.", keys: [:space, :return])
     end
 
     def display_most_expensive_subscription
@@ -56,7 +62,7 @@ module SpendingAnalyzer
         table = TTY::Table.new(["Cost per".green,"Price".green], rows)
         puts table.render(:ascii, alignment: [:center])
         puts "\n"
-        @@prompt.keypress("Press space or enter to return to Spending Summary", keys: [:space, :return])
+        @@prompt.keypress("Press space or enter to return to the Spending Summary menu.", keys: [:space, :return])
     end
 
     def display_spending_by_category
@@ -69,7 +75,7 @@ module SpendingAnalyzer
         table = TTY::Table.new(["Category".green,"Monthly Cost".green,"Yearly Cost".green], rows)
         puts table.render(:ascii, alignment: [:center])
         puts "\n"
-        @@prompt.keypress("Press space or enter to return to Spending Summary", keys: [:space, :return])
+        @@prompt.keypress("Press space or enter to return to the Spending Summary menu.", keys: [:space, :return])
     end
 
     

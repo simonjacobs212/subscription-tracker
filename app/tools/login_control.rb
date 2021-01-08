@@ -114,7 +114,9 @@ module LoginControl
     @user.display_current_budget if @user.has_budget?
     budget = get_budget_amount
     @user.set_budget(budget)
-    system 'clear'
+    puts "✅ Your budget has been updated!".green
+    play_single_coin
+    custom_clear
   end
 
 end
