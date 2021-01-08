@@ -14,5 +14,5 @@ require_relative '../app/tools/spending_analyzer.rb'
 require_relative '../app/tools/access_subscriptions.rb'
 require_relative '../app/tools/user_settings.rb'
 
-require_all 'app'
+require_all 'app' 
 
