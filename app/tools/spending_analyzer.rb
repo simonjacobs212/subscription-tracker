@@ -1,5 +1,4 @@
 module SpendingAnalyzer 
-    
     include CliControls
 
     def spending_summary

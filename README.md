@@ -11,7 +11,6 @@ This app is designed to keep tracker of your free and paid subscriptions such as
 ## Table of Contents
 - [Welcome to Subscription Tracker!](#welcome-to-subscription-tracker)
 - [Table of Contents](#table-of-contents)
-- [- 3.1 Known issues](#--31-known-issues)
 - [1. Using the App](#1-using-the-app)
   - [1.1 Launching the App](#11-launching-the-app)
   - [1.2 Logging In](#12-logging-in)
@@ -25,12 +24,16 @@ This app is designed to keep tracker of your free and paid subscriptions such as
       - [1.3.1.4 Delete Subscription](#1314-delete-subscription)
       - [1.3.1.5 Access Reminders](#1315-access-reminders)
     - [1.3.2 Spending Analyzer](#132-spending-analyzer)
+      - [1.3.2.1 Overall Spending Summary](#1321-overall-spending-summary)
+      - [1.3.2.2 Spending By Category](#1322-spending-by-category)
+      - [1.3.2.3 Most Expensive Subscription](#1323-most-expensive-subscription)
     - [1.3.3 Reminders](#133-reminders)
       - [1.3.3.1 Change Days Notice](#1331-change-days-notice)
       - [1.3.3.2 Disable Reminder](#1332-disable-reminder)
     - [1.3.4 User Settings](#134-user-settings)
       - [1.3.4.1 Change SubscriptionTracker Username](#1341-change-subscriptiontracker-username)
       - [1.3.4.2 Change SubscriptionTracker Password](#1342-change-subscriptiontracker-password)
+      - [1.3.4.2 Update Budget](#1343-update-budget)
       - [1.3.4.4 Delete SubscriptionTracker Account](#1344-delete-subscriptiontracker-account)
 - [2. App Design](#2-app-design)
   - [2.1 Domain Model (ERD)](#21-domain-model-erd)
@@ -48,9 +51,10 @@ This app is designed to keep tracker of your free and paid subscriptions such as
     - [2.5.2 User Login System](#252-user-login-system)
     - [2.5.3 Modularize Main App](#253-modularize-main-app)
     - [2.5.4 Reminders link to User's Calendar App](#254-reminders-link-to-users-calendar-app)
-    - [2.5.5 Bring the Terminal to Life](#255-bring-the-terminal-to-life)
+    - [2.5.5 Enhanced UI](#255-enhanced-ui)
 - [3. Contributing](#3-contributing)
   - [3.1 Known issues](#31-known-issues)
+  - [3.2 Contributors](#32-contributors)
 ---
 ## 1. Using the App
 ### 1.1 Launching the App
@@ -65,6 +69,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
 If you have not previously made an account with SubscriptionTracker, select <strong>New User</strong> from the main menu.
 * The app will ask you for your first and last name, as well as a username and password in order to create an account.
 * If the username you have selected is already in use, you will be prompted to pick a new username
+* If you would like for SubscriptionTracker to help you monitor your monthly budget for subscription services, you can enter your monthly budget in when prompted.
 
 #### 1.2.2 Existing Users
 If you have previously made an account with Subscriptiontracker, enter the username and password that you selected when you made the account.
@@ -135,12 +140,25 @@ More information on Reminders can be found at [1.3.3 Reminders](#133-reminders)
 [[Top]](#table-of-contents)
 
 #### 1.3.2 Spending Analyzer
-Selecting this menu option will provide an analysis of your current spending based upon the <strong>current</strong> costs of your subscriptions as well as the durations for each of your subscriptions
+Selecting this menu option will provide an analysis of your current spending based upon the <strong>current</strong> costs of your subscriptions, as well as the durations for each of your subscriptions, and your indicated budget (optional).
+##### 1.3.2.1 Overall Spending Summary
 * Daily spending report presents a normalized report for the cost of the users current subscriptions per day
   * This is helpful for comparison to common daily expenditures such as a coffee or buying lunch out.
 * Monthly spending report assumes that all current subscriptions will be maintained for at least 30 days
 * Yearly spending report assumes that all current subscriptions will be maintained for 365 days
-* Cost by category will present your will a breakdown of how much the user spends on each of the categories that their services belong to. Please note that some services belong to multiple categories so the total spending of all of your categories may appear higher than your actual recurring payments. Use this to look for areas in which you many be overspending.
+* If the user has specified a monthly budget, it will be compared to your monthly spending to determine how much under or over budget you currently are.
+
+[[Top]](#table-of-contents)
+
+##### 1.3.2.2 Spending by Category
+* This will present your will a breakdown of how much the user spends on each of the categories that their services belong to. 
+  * Please note that some services belong to multiple categories so the total spending of all of your categories may appear higher than your actual recurring payments. 
+  * Use this to look for areas in which you many be overspending.
+
+[[Top]](#table-of-contents)
+
+##### 1.3.2.3 Most Expensive Subscription
+* This will display your most expensive service in terms of cost per day. This controls for the naturally higher prices of longer term subscription plans.
 
 [[Top]](#table-of-contents)
 
@@ -168,6 +186,8 @@ Selecting this option will allow you to disable the current reminder for a subsc
 This will allow you to change the username that you use to log in to the SubscriptionTracker application. Please note that this does not change the username for your subscription services.
 ##### 1.3.4.2 Change SubscriptionTracker Password
 This will allow you to change the password which you use to log in to the SubscriptionTracker application. Please note that this does not change the password for any of your subscription services.
+##### 1.3.4.3 Update Budget
+This will allow your to enter a monthly budget into Subscription Tracker. If a budget has been set, the [Spending Analyzer](#132-spending-analyzer) will also compare your current spending to your budget.
 ##### 1.3.4.4 Delete SubscriptionTracker Account
 Selecting this option will allow you to <strong>permanently</strong> delete your user account from SubscriptionTracker. This will delete your account, your subscriptions, and any Calendar Event files that you created for your reminders while using SubscriptionTracker.
 
@@ -206,7 +226,7 @@ Selecting this option will allow you to <strong>permanently</strong> delete your
 
 ### 2.3 Interface Modules
 The main features and menus of the SubscriptionTracker Interface are modularized to facilitate navigation, maintenance, and expansion. In order for the module associations to function, the modules are required using the heirarchy shown below:
-<img src="app/lib/images/App Module Diagram.png" style="display:block;margin-left:auto;margin-right:auto">
+<img src="app/lib/images/ModuleHeirarchy.png" style="display:block;margin-left:auto;margin-right:auto">
 
 
 [[Top]](#table-of-contents)
@@ -303,17 +323,30 @@ Status: :white_check_mark:
 
 [[Top]](#table-of-contents)
 
-#### 2.5.5 Bring the Terminal to Life
+#### 2.5.5 Enhanced UI
 * :white_check_mark: Use `colorize` to color and format CLI output
 * :white_check_mark: Use `TTY-Table` to create display tables for spending data
-* :white_check_mark: Use ASCII art to create welcome logo and menu graphics
-* Animate the welcome menu 
+* :white_check_mark: Use ASCII art to create welcome logo
+* :white_check_mark: Animate the welcome menu
+* :white_check_mark: Custom screen clear method created to permanently display logo
+* :white_check_mark: Sound effects linked to app launch, app exit, warnings, successful changes, and data deletion
+
+[[Top]](#table-of-contents)
 
 ## 3. Contributing
 Pull requests are welcome. Please make sure that your PR is <a href="https://www.netlify.com/blog/2020/03/31/how-to-scope-down-prs/">well-scoped</a>. For major changes, please open an issue first to discuss what you would like to change.
 
 ### 3.1 Known issues
 * <a href="https://github.com/simonjacobs212/subscription-tracker/issues">Visit Issues Section</a>
+
+### 3.2 Contributors
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/dsasse07"><img src="https://avatars1.githubusercontent.com/u/72173601?s=400&u=57e4654c70d63d16bc5b84e2878d97f770672715&v=4" width="200px;" alt=""/><br /><sub><b>Daniel Sasse</b></sub></a><br />
+    <td></td>
+    <td align="center"><a href="https://github.com/simonjacobs212"><img src="https://avatars1.githubusercontent.com/u/71735267?s=460&v=4" width="200px;" alt=""/><br /><sub><b>Simon Jacobs</b></sub></a><br />
+    </tr>
+</table>
 
 [[Top]](#table-of-contents)
 
