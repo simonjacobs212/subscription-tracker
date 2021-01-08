@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210108T143445Z
+UID:5a50c003-865e-44a9-aaac-b26fb976fe2e
+DTSTART;VALUE=DATE:20210202
+DTEND;VALUE=DATE:20210208
+CLASS:PRIVATE
+DESCRIPTION:Your Disney+ subscription for the email address jsmith@gmail.co
+ m is set to expire on Feb 07 2021. Be sure to login to disneyplus.com to c
+ ancel your subscription if you do not wish to renew.
+SUMMARY:💰 Disney+ is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

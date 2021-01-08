@@ -19,19 +19,34 @@ music = Category.create(name: "Music Streaming")
 e_com = Category.create(name: "E-Commerce")
 gaming = Category.create(name: "Gaming")
 live_tv = Category.create(name: "Live TV")
+news = Category.create(name: "News")
 
 puts "creating services"
 
 netflix = Service.create(name: "Netflix", url: "netflix.com")
 hulu = Service.create(name: "Hulu", url: "hulu.com")
 amazon = Service.create(name: "Amazon", url: "amazon.com")
-disney_plus = Service.create(name: "Disney+", url: "https://www.disneyplus.com/login")
+hbo_now = Service.create(name: "HBO Now", url: "hbonow.com")
+youtube_tv = Service.create(name: "YouTube TV", url: "tv.youtube.com")
+sling_tv = Service.create(name: "Sling TV", url: "sling.com")
+acorn_tv = Service.create(name: "Acorn TV", url: "acorn.tv")
+disney_plus = Service.create(name: "Disney+", url: "disneyplus.com")
+cbs_all_access = Service.create(name: "CBS All Access", url: "cbs.com")
+directv_now = Service.create(name: "DirecTV Now", url: "atttvnow.com")
 spotify = Service.create(name: "Spotify", url: "spotify.com")
 pandora = Service.create(name: "Pandora", url: "pandora.com")
 ebay = Service.create(name: "Ebay", url: "ebay.com")
 twitch = Service.create(name: "Twitch", url: "twitch.com")
+switch = Service.create(name: "Nintendo Switch", url: "nintendo.com")
 wow = Service.create(name: "World of Warcraft", url: "worldofwarcraft.com")
 xbox = Service.create(name: "Xbox Live", url: "xbox.com")
+apple_arcade = Service.create(name: "Apple Arcade", url: "apple.com")
+playstation_plus = Service.create(name: "Playstation Plus", url: "playstation.com")
+google_stadia = Service.create(name: "Google Stadia", url: "stadia.google.com")
+ny_times = Service.create(name: "New York Times", url: "nytimes.com")
+wash_post = Service.create(name: "Washinton Post", url: "washingtonpost.com")
+apple_news = Service.create(name: "Apple News+", url: "apple.com")
+
 
 puts "creating users"
 
@@ -44,15 +59,28 @@ shelly = User.create(first_name: "shelly", last_name: "lansing", app_username: "
 puts "creating service categories"
 
 netflix.categories << video
-hulu.categories << [video, live_tv]
-amazon.categories << [e_com, video, music, live_tv]
+hulu.categories << video
+amazon.categories << [e_com, video]
+hbo_now.categories << video
+youtube_tv.categories << video
+sling_tv.categories << video
+acorn_tv.categories << video
+cbs_all_access.categories << video
+directv_now.categories << video
 disney_plus.categories << video
 spotify.categories << music
 pandora.categories << music
 ebay.categories << e_com
 twitch.categories << video
 wow.categories << gaming
-xbox.categories << [gaming, video]
+xbox.categories << gaming
+apple_arcade.categories << gaming
+google_stadia.categories << gaming
+switch.categories << gaming
+playstation_plus.categories << gaming
+ny_times.categories << news
+wash_post.categories << news
+apple_news.categories << news
 
 puts "creating subscriptions"
 
