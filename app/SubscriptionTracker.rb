@@ -19,7 +19,7 @@ class SubscriptionTracker
   def welcome
     custom_clear
     display_logo
-    puts "Welcome to SubscriptionTracker!"
+    puts "Welcome to SubscriptionTracker!\n".light_green
     sleep(0.3)
   end
 

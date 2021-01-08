@@ -10,7 +10,7 @@ module LoginControl
     when "Existing User"
       handle_existing_user
     when "Quit"
-      custom_clear
+      logout
       exit
     end
   end
