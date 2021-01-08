@@ -4,16 +4,16 @@ module AccessSubscriptions
   include CalendarHandler
 
   def access_subscriptions
-    system 'clear'
+    custom_clear
     @subscription = pick_subscription
     case @subscription
     when "Add New Subscription"
       add_new_subscription
     when "Back"
-      system 'clear'
+      custom_clear
       main_menu
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     else
       subscription_action
@@ -42,7 +42,7 @@ module AccessSubscriptions
   end
 
   def subscription_action
-    system 'clear'
+    custom_clear
     puts @subscription.display_subscription_info
     subscription_options = ["Access Reminder", "Update/Delete Susbcription", "Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", subscription_options)
@@ -52,19 +52,19 @@ module AccessSubscriptions
       sleep (1.5)
       subscription_action
     when "Update/Delete Susbcription"
-      system 'clear'
+      custom_clear
       update_subscription_handler
     when "Back"
-      system 'clear'
+      custom_clear
       main_menu
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end
 
   def reminder_menu
-    system 'clear'
+    custom_clear
     @subscription.display_active_reminder_for_subscription
     choices = ["Change Days Notice", "Disable Reminder", "Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", choices)
@@ -75,16 +75,17 @@ module AccessSubscriptions
     when "Disable Reminder"
       disable_reminder
     when "Back"
-      system 'clear'
+      custom_clear
       main_menu
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end
 
   def no_current_reminder
     puts "⚠️ No reminder is currently set for this subscription.".yellow
+    play_warning_sound
     yes_no("Would you like to set one now?") ? create_reminder_and_file : subscription_action
   end
 
@@ -105,7 +106,10 @@ module AccessSubscriptions
 
   def disable_reminder
     puts "⚠️ You will no longer be notified of the renewal date for this subscription.".yellow
+    play_warning_sound
     yes_no("Do you wish to continue?".yellow) ? @subscription.disable_reminder_for_subscription : reminder_menu
+    puts "✅ Your reminder has been set for #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")} which will provide #{days_notice} days notice.".green
+    play_single_coin
   end
 
   def create_reminder_and_file

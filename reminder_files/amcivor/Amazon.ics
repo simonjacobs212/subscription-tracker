@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210107T231842Z
+UID:ea26ae14-17f5-48ec-a2c0-bff6adaf8860
+DTSTART;VALUE=DATE:20210204
+DTEND;VALUE=DATE:20210207
+CLASS:PRIVATE
+DESCRIPTION:Your Amazon subscription for the email address amcivor@gmail.co
+ m is set to expire on Feb 06 2021. Be sure to login to amazon.com to cance
+ l your subscription if you do not wish to renew.
+SUMMARY:💰 Amazon is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

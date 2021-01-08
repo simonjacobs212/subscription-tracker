@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210107T232839Z
+UID:9fe9e5ce-0854-4f79-9ad5-4b49ac9b3a50
+DTSTART;VALUE=DATE:20200728
+DTEND;VALUE=DATE:20200803
+CLASS:PRIVATE
+DESCRIPTION:Your Twitch subscription for the email address amcivor@gmail.co
+ m is set to expire on Aug 02 2020. Be sure to login to twitch.com to cance
+ l your subscription if you do not wish to renew.
+SUMMARY:💰 Twitch is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

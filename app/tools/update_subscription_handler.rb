@@ -19,10 +19,10 @@ module UpdateSubscriptionHandler
       @subscription.delete_subscription if confirm_delete? 
       access_subscriptions
     when "Back"
-      system 'clear'
+      custom_clear
       access_subscriptions
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end
@@ -49,11 +49,13 @@ module UpdateSubscriptionHandler
   end
 
   def want_new_reminder?
-    yes_no("Would you like to set a reminder for this updated subscription?\n⚠️ If you previously had a reminder, it has been disabled ⚠️".yellow)
+    play_warning_sound
+    yes_no("⚠️ Would you like to set a reminder for this updated subscription? ⚠️\n⚠️ If you previously had a reminder, it has been disabled ⚠️")
   end
 
   def confirm_delete?
-    yes_no("⚠️ Are you sure you want to delete this subscription? This action cannot be undone. ⚠️".yellow)
+    play_warning_sound
+    yes_no("⚠️ Are you sure you want to delete this subscription? This action cannot be undone. ⚠️")
   end
 
 end

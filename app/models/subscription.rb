@@ -34,6 +34,7 @@ class Subscription < ActiveRecord::Base
     days_left = (self.reload.renewal_date.to_datetime - DateTime.now)
     return days_left.to_i if days_left.to_i > 0
     "⚠️ This subscription has expired.".yellow
+    play_warning_sound
   end
 
   def change_subscription(hash)
@@ -43,6 +44,7 @@ class Subscription < ActiveRecord::Base
   def delete_subscription
     self.destroy
     puts "💥 Your subscription has been deleted.".yellow
+    play_explosion
     sleep (1.5)
   end
 

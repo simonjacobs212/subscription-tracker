@@ -16,3 +16,4 @@ gem 'twilio-ruby'
 gem 'dotenv'
 gem "tty-table"
 gem 'icalendar'
+gem 'tty-screen', '~> 0.8.1'

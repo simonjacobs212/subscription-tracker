@@ -107,6 +107,7 @@ DEPENDENCIES
   sinatra-activerecord
   sqlite3
   tty-prompt
+  tty-screen (~> 0.8.1)
   tty-table
   twilio-ruby
 

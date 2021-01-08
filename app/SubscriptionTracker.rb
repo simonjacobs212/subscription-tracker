@@ -2,7 +2,7 @@ class SubscriptionTracker
   include UserSettings
   include AccessSubscriptions
   include SpendingAnalyzer
-  include FontStuff
+  
 
   attr_accessor :new_user_info
   
@@ -17,23 +17,24 @@ class SubscriptionTracker
   private
   
   def welcome
-    system 'clear'
+    custom_clear
     display_logo
-    puts "Welcome to SubscriptionTracker!".blue
+    puts "Welcome to SubscriptionTracker!\n".light_green
     sleep(0.3)
   end
 
-  def say_hi_to_user   #ASCII picture?
-    system 'clear'
+  def say_hi_to_user   
+    custom_clear
     puts "Welcome #{@user.first_name.capitalize}!".light_blue
     puts "\n" 
+    sleep(0.3)
   end
 
   def display_active_reminders_for_user
     puts "\n"
     @user.display_upcoming_renewals
     @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
-    system 'clear'
+    custom_clear
   end
 
   def main_menu
@@ -47,7 +48,7 @@ class SubscriptionTracker
     when "Spending Summary"
       spending_summary
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end
