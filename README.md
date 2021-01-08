@@ -11,6 +11,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
 ## Table of Contents
 - [Welcome to Subscription Tracker!](#welcome-to-subscription-tracker)
 - [Table of Contents](#table-of-contents)
+- [- 3.2 Contributors](#--32-contributors)
 - [1. Using the App](#1-using-the-app)
   - [1.1 Launching the App](#11-launching-the-app)
   - [1.2 Logging In](#12-logging-in)
@@ -25,7 +26,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
       - [1.3.1.5 Access Reminders](#1315-access-reminders)
     - [1.3.2 Spending Analyzer](#132-spending-analyzer)
       - [1.3.2.1 Overall Spending Summary](#1321-overall-spending-summary)
-      - [1.3.2.2 Spending By Category](#1322-spending-by-category)
+      - [1.3.2.2 Spending by Category](#1322-spending-by-category)
       - [1.3.2.3 Most Expensive Subscription](#1323-most-expensive-subscription)
     - [1.3.3 Reminders](#133-reminders)
       - [1.3.3.1 Change Days Notice](#1331-change-days-notice)
@@ -33,7 +34,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
     - [1.3.4 User Settings](#134-user-settings)
       - [1.3.4.1 Change SubscriptionTracker Username](#1341-change-subscriptiontracker-username)
       - [1.3.4.2 Change SubscriptionTracker Password](#1342-change-subscriptiontracker-password)
-      - [1.3.4.2 Update Budget](#1343-update-budget)
+      - [1.3.4.3 Update Budget](#1343-update-budget)
       - [1.3.4.4 Delete SubscriptionTracker Account](#1344-delete-subscriptiontracker-account)
 - [2. App Design](#2-app-design)
   - [2.1 Domain Model (ERD)](#21-domain-model-erd)
@@ -349,7 +350,3 @@ Pull requests are welcome. Please make sure that your PR is <a href="https://www
 </table>
 
 [[Top]](#table-of-contents)
-
-To do:
-* update service urls
-* build more services
