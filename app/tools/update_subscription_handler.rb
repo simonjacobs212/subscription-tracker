@@ -23,10 +23,10 @@ module UpdateSubscriptionHandler
       @subscription.delete_subscription if confirm_delete? 
       access_subscriptions
     when "Back"
-      system 'clear'
+      custom_clear
       access_subscriptions
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end

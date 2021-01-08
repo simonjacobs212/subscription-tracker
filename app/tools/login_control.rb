@@ -10,7 +10,7 @@ module LoginControl
     when "Existing User"
       handle_existing_user
     when "Quit"
-      system 'clear'
+      custom_clear
       exit
     end
   end
@@ -22,7 +22,7 @@ module LoginControl
   end
 
   def gather_new_user_data
-      system 'clear'
+      custom_clear
       @new_user_info = new_user_input
       @repeat_password = @@prompt.mask("Re-enter your SubscriptionTracker to confirm: ", required: true, mask: @@heart)
       gather_new_user_data if !(validate_new_user_credentials == @new_user_info)
@@ -47,7 +47,7 @@ module LoginControl
   def name_taken
     puts "⚠️  ⚠️  This username has already been taken. Please choose a new SubscriptionTracker username ⚠️  ⚠️"
     @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
-    system 'clear'
+    custom_clear
   end
 
   def app_username_available?(username)
@@ -57,7 +57,7 @@ module LoginControl
   def password_mismatch
     puts "⚠️  ⚠️  Passwords do not match. Please re-enter your information ⚠️  ⚠️"
     @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
-    system 'clear'
+    custom_clear
   end
 
   def new_user_input
@@ -81,7 +81,7 @@ module LoginControl
 
   def gather_existing_data
     while 0==0 
-      system 'clear'
+      custom_clear
       @user = find_user
       return @user if !@user.nil?
       puts "User not found or password incorrect"

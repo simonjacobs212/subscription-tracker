@@ -4,7 +4,7 @@ module NewSubscriptionControl
   include CliControls
 
   def add_new_subscription
-    system 'clear'
+    custom_clear
     @service = pick_service
     new_subscription_info_hash = @@prompt.collect do
       key(:email).ask("\nWhat email address did you use to sign up for this service?") do |response| 

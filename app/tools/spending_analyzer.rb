@@ -3,27 +3,27 @@ module SpendingAnalyzer
     include CliControls
 
     def spending_summary
-        system 'clear'
+        custom_clear
         choices = ["View Overall Spending", "View Spending by Category", "View Most Expensive Subscription", "Back", "Logout"]
         selection = @@prompt.select("What would you like to do?", choices)
         case selection
         when "View Overall Spending"
-            system 'clear' 
+            custom_clear 
             overall_spending_summary
             spending_summary
         when "View Spending by Category"
-            system 'clear'
+            custom_clear
             display_spending_by_category
             spending_summary
         when "View Most Expensive Subscription"
-            system 'clear'
+            custom_clear
             display_most_expensive_subscription
             spending_summary
         when "Back"
-            system 'clear'
+            custom_clear
             main_menu
         when "Logout"
-            system 'clear'
+            custom_clear
             run
         end
     end
@@ -43,7 +43,7 @@ module SpendingAnalyzer
     end
 
     def display_most_expensive_subscription
-        system 'clear'
+        custom_clear
         rows = [
             ["Day:","$#{sprintf('%.2f', @user.most_expensive_subscription.normalize_cost.round(2))}".light_green],
             ["Month:","$#{sprintf('%.2f', (@user.most_expensive_subscription.normalize_cost * 30).round(2))}".light_green],

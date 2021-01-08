@@ -17,14 +17,14 @@ class SubscriptionTracker
   private
   
   def welcome
-    system 'clear'
+    custom_clear
     display_logo
     puts "Welcome to SubscriptionTracker!"
     sleep(0.3)
   end
 
   def say_hi_to_user   
-    system 'clear'
+    custom_clear
     puts "Welcome #{@user.first_name.capitalize}!"
     puts "\n" 
   end
@@ -33,7 +33,7 @@ class SubscriptionTracker
     puts "\n"
     @user.display_upcoming_renewals
     @@prompt.keypress("Press space or enter to return to Main Menu", keys: [:space, :return])
-    system 'clear'
+    custom_clear
   end
 
   def main_menu
@@ -47,7 +47,7 @@ class SubscriptionTracker
     when "Spending Summary"
       spending_summary
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end

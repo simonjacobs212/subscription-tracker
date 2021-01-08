@@ -3,7 +3,7 @@ module UserSettings
 
   ######################## User Settings ############################
   def user_settings
-    system 'clear'
+    custom_clear
     print_user_info
     user_settings_action_selection
   end
@@ -21,14 +21,14 @@ module UserSettings
     when "Change SubscriptionTracker Password"
       change_app_password_handler
     when "Delete SubscriptionTracker Account & Data"
-      system 'clear'
+      custom_clear
       delete_user_account if confirm_user_delete?
       user_settings_action_selection
     when "Back"
-      system 'clear'
+      custom_clear
       main_menu
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end 

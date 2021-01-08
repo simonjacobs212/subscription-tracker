@@ -6,16 +6,16 @@ module AccessSubscriptions
   include CalendarHandler
 
   def access_subscriptions
-    system 'clear'
+    custom_clear
     @subscription = pick_subscription
     case @subscription
     when "Add New Subscription"
       add_new_subscription
     when "Back"
-      system 'clear'
+      custom_clear
       main_menu
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     else
       subscription_action
@@ -31,7 +31,7 @@ module AccessSubscriptions
   end
 
   def subscription_action
-    system 'clear'
+    custom_clear
     puts @subscription.display_subscription_info
     subscription_options = ["Access Reminder", "Update/Delete Susbcription", "Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", subscription_options)
@@ -41,19 +41,19 @@ module AccessSubscriptions
       sleep (1.5)
       subscription_action
     when "Update/Delete Susbcription"
-      system 'clear'
+      custom_clear
       update_subscription_handler
     when "Back"
-      system 'clear'
+      custom_clear
       main_menu
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end
 
   def reminder_menu
-    system 'clear'
+    custom_clear
     @subscription.display_active_reminder_for_subscription
     choices = ["Change Days Notice", "Disable Reminder", "Back", "Logout"]
     selection = @@prompt.select("What would you like to do?", choices)
@@ -64,10 +64,10 @@ module AccessSubscriptions
     when "Disable Reminder"
       disable_reminder
     when "Back"
-      system 'clear'
+      custom_clear
       main_menu
     when "Logout"
-      system 'clear'
+      custom_clear
       run
     end
   end
