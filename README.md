@@ -201,7 +201,7 @@ Selecting this option will allow you to <strong>permanently</strong> delete your
 [[Top]](#table-of-contents)
 ### 2.2 Model Associations
 * A Category 
-  * has many ServiceCategories
+  * has many ServiceCategories 
   * has many Services through ServiceCategories
 * A ServiceCategory
   * belongs to a Category
