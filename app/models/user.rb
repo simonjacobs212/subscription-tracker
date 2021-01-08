@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
         end
     end
 
-####################################### MVP + METHODS ###########################################
+####################################### MVP + METHODS ##########################################
 
     def print_app_login_info
         puts "Current SubscriptionTracker Credentials:"
