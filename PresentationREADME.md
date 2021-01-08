@@ -14,7 +14,7 @@ This app is designed to keep tracker of your free and paid subscriptions such as
 ### Domain Model (ERD)
 <img src="app/lib/images/SubscriptionTracker_ERD.png" style="display:block;margin-left:auto;margin-right:auto">
 <p> 
-</p>
+ </p>
 
 ## Module Structures
 
