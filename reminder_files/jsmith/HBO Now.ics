@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20210108T143516Z
+UID:6f70d6cc-67a1-4297-89d0-2cc4150bc81d
+DTSTART;VALUE=DATE:20210202
+DTEND;VALUE=DATE:20210208
+CLASS:PRIVATE
+DESCRIPTION:Your HBO Now subscription for the email address jsmith@gmail.co
+ m is set to expire on Feb 07 2021. Be sure to login to hbonow.com to cance
+ l your subscription if you do not wish to renew.
+SUMMARY:💰 HBO Now is expiring!
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
