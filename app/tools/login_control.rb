@@ -46,6 +46,7 @@ module LoginControl
 
   def name_taken
     puts "⚠️  ⚠️  This username has already been taken. Please choose a new SubscriptionTracker username ⚠️  ⚠️"
+    play_warning_sound
     @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
     custom_clear
   end
@@ -56,6 +57,7 @@ module LoginControl
 
   def password_mismatch
     puts "⚠️  ⚠️  Passwords do not match. Please re-enter your information ⚠️  ⚠️"
+    play_warning_sound
     @@prompt.keypress("Press space or enter to continue", keys: [:space, :return])
     custom_clear
   end

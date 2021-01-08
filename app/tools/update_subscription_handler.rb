@@ -44,7 +44,8 @@ module UpdateSubscriptionHandler
       end
         @subscription.update(new_sub_info)
         @subscription.update_renewal_date
-        puts "✅ Your subscription information has been updated"
+        puts "✅ Your subscription information has been updated".green
+        play_single_coin
         sleep (1.5)
     end
 
@@ -53,10 +54,12 @@ module UpdateSubscriptionHandler
     end
 
     def want_new_reminder?
-      yes_no("Would you like to set a reminder for this updated subscription?\n⚠️ If you previously had a reminder, it has been disabled ⚠️")
+      play_warning_sound
+      yes_no("⚠️ Would you like to set a reminder for this updated subscription? ⚠️\n⚠️ If you previously had a reminder, it has been disabled ⚠️")
     end
 
     def confirm_delete?
+      play_warning_sound
       yes_no("⚠️ Are you sure you want to delete this subscription? This action cannot be undone. ⚠️")
     end
 

@@ -74,6 +74,7 @@ module AccessSubscriptions
 
   def no_current_reminder
     puts "⚠️ No reminder is currently set for this subscription."
+    play_warning_sound
     yes_no("Would you like to set one now?") ? create_reminder_and_file : subscription_action
   end
 
@@ -88,11 +89,13 @@ module AccessSubscriptions
   def set_new_reminder
     days_notice = ask_days_notice
     @subscription.set_reminder(days_notice)
-    puts "Your reminder has been set for #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")} which will provide #{days_notice} days notice."
+    puts "✅ Your reminder has been set for #{@subscription.active_reminder.reminder_date.strftime("%b %d %Y")} which will provide #{days_notice} days notice.".green
+    play_single_coin
   end
 
   def disable_reminder
     puts "⚠️ You will no longer be notified of the renewal date for this subscription."
+    play_warning_sound
     yes_no("Do you wish to continue?") ? @subscription.disable_reminder_for_subscription : reminder_menu
   end
 

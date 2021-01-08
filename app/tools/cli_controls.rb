@@ -1,4 +1,7 @@
+require_relative './funstuff'
+
 module CliControls
+    include FunStuff
 
     @@prompt = TTY::Prompt.new
     @@heart = @@prompt.decorate(@@prompt.symbols[:heart] + " ", :magenta)

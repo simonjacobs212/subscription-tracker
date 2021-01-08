@@ -2,11 +2,12 @@ module FunStuff
 
   def display_logo
     @logo = frame2
-    scroll_in("light_green")
+    no_money = frame
+    scroll_in(no_money, "light_green")
     sleep(0.2)
     play_multi_coin
     same_color("light_blue")
-    sleep(2.0)
+    sleep(1.0)
   end
 
   def logout
@@ -17,21 +18,29 @@ module FunStuff
   end
 
   def play_single_coin
-    system 'afplay', 'app/lib/music/super-mario-world-coin.mp3'
+    system 'afplay','-r','0.9','-v','0.6', 'app/lib/music/super-mario-world-coin.mp3'
   end
 
   def play_multi_coin
-    system 'afplay', 'app/lib/music/super-mario-world-multiple-coins.mp3'
+    system 'afplay','-r','0.9','-v','0.4', 'app/lib/music/super-mario-world-multiple-coins.mp3'
   end
 
   def play_mario_goodbye
-    system 'afplay', 'app/lib/music/mk64_nexttime.wav'
+    system 'afplay','-r','1.5','-v','0.3', 'app/lib/music/mk64_nexttime.wav'  
   end
 
-  def scroll_in(color)
-    (@logo.length+1).times do |t|
+  def play_warning_sound
+    system 'afplay','-r','0.9','-v','0.6', 'app/lib/music/mk64_item_drop.wav'
+  end
+
+  def play_explosion
+    system 'afplay','-r','1.4','-v','0.3', 'app/lib/music/explosion.wav'
+  end
+
+  def scroll_in(array, color)
+    (array.length+1).times do |t|
       system 'clear'
-      @logo.each_with_index do |line, index|
+      array.each_with_index do |line, index|
         if index >= t 
           puts line.send(:hide) 
         else 
@@ -126,7 +135,7 @@ module FunStuff
   def custom_clear
     system 'clear'
     @logo = frame2
-    same_color("light_green")
+    same_color("light_blue")
   end
 
   def frame2

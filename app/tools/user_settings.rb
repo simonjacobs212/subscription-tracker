@@ -38,6 +38,7 @@ module UserSettings
     validate_new_username
     @user.update(app_username: @new_app_username)
     puts "✅ Your SubscriptionTracker username has been updated to #{@user.app_username}.".green
+    play_single_coin
     @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
     user_settings
   end 
@@ -55,6 +56,7 @@ module UserSettings
     validate_new_password
     @user.update(app_password: @new_app_password)
     puts "✅ Your SubscriptionTracker password has been updated to #{@user.app_password}.".green
+    play_single_coin
     @@prompt.keypress("Press space or enter to return to User Settings Menu", keys: [:space, :return])
     user_settings
   end
@@ -70,6 +72,7 @@ module UserSettings
     delete_users_data
     @user.delete_user_files
     @user.destroy
+    play_explosion
     @@prompt.keypress("Your data has been destroyed. Press space or enter to exit.".yellow, keys: [:space, :return])
     run
   end
@@ -83,6 +86,7 @@ module UserSettings
 
   def confirm_user_delete?
     puts "⚠️  Warning: This action cannot be undone. ⚠️ ".yellow
+    play_warning_sound
     yes_no("Are you sure you would like to delete your account and data?")
   end
 

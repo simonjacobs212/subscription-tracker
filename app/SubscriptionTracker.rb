@@ -4,7 +4,7 @@ class SubscriptionTracker
   include UserSettings
   include AccessSubscriptions
   include SpendingAnalyzer
-  include FunStuff
+  
 
   def run
     welcome
